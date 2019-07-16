@@ -1,4 +1,4 @@
-Project: Pet Spa Manage
+Project: Money Lover
 
 Member:
 - Nguyễn Công Hậu
