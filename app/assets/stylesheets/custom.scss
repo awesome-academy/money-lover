@@ -1,0 +1,48 @@
+.navbar {
+  margin-bottom: 0;
+}
+
+#left {
+  width: 250px;
+  float: left;
+}
+
+
+#top .navbar-brand {
+  padding-top: 3px;
+}
+
+.navbar-default {
+  .logo {
+    color: $violet;
+    font-size: 22px;
+    transition: ease 0.3s;
+
+    &:hover {
+      color: $red;
+      opacity: .5;
+      span {
+        color: $violet;
+      }
+    }
+
+    span {
+      color: $red;
+    }
+  }
+}
+
+#content {
+  min-height: calc(100vh - 50px);
+}
+
+#footer {
+  text-align: center;
+  padding: 15px 0;
+  background: $gray_bg;
+  border-top: 1px solid $gray_border;
+  p {
+    color: $red;
+    margin-bottom: 0;
+  }
+}
