@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MoneyLover</title>
+    <title><%= full_title yield(:title) %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%= render "layouts/shrim" %>
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbolinks-track": "reload" %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="padTop53">
+    <div id="wrap">
+      <%= render "layouts/header"%>
+      <div id="content">
+        <%= yield %>
+      </div>
+      <%= render "layouts/footer" %>
+    </div>
   </body>
 </html>
