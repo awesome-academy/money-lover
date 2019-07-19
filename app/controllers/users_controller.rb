@@ -1,11 +1,22 @@
 class UsersController < ApplicationController
-  before_action :load_user, only: %i(show)
+  before_action :load_user, only: %i(show edit update)
 
   def new
     @user = User.new
   end
 
   def show; end
+  
+  def edit; end;
+
+  def update
+    if @user.update user_params
+      flash[:success] = t "flash.update_success"
+      redirect_to @user
+    else
+      render :edit
+    end
+  end
 
   def create
     @user = User.new user_params
