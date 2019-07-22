@@ -5,13 +5,19 @@ en:
     login: "Log in"
     forgot_password: "Forgot password"
     remember_me: "remember me"
+    new_account: "New account?"
+    logout: "Logout"
   button:
     signup: "Sign up"
   users:
     create_my_account: "Create my account"
+    profile: "Profile"
   error:
     error: "Error"
     content: "The form contains"
   flash:
     created_account: "Created account"
-    no_account: "No account"    
+    no_account: "No account"
+    invalid_account: "Invalid email or password"
+  menu:
+    account: "Account"    

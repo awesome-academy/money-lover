@@ -5,13 +5,19 @@ vi:
     login: "Đăng nhập"
     forgot_password: "Quên mật khẩu"
     remember_me: "Lưu tài khoản"
+    new_account: "Tạo tài khoản"
+    logout: "Đăng xuất"
   button:
     signup: "Đăng ký"
   users:
     create_my_account: "Tạo tài khoản"
+    profile: "Tài khoản"
   error:
     error: "Lỗi"
     content: "The form contains"
   flash:
     created_account: "Tạo tài khoản thành công"
-    no_account: "Tài khoản không tồn tại"    
+    no_account: "Tài khoản không tồn tại"
+    invalid_account: "Sai email hoặc mật khẩu"  
+  menu:
+    account: "Tài khoản" 
