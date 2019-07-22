@@ -1,0 +1,11 @@
+validate:
+  max_name: 50
+  max_email: 255
+  min_pass: 6
+  max_content: 140
+  max_address: 100
+  max_phone: 11
+  max_username: 50
+  valid_email: !ruby/regexp '/\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i'
+gravatar:
+  size50: 50

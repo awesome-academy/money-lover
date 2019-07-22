@@ -34,6 +34,7 @@ build-iPhoneSimulator/
 /_yardoc/
 /doc/
 /rdoc/
+/test/
 
 ## Environment normalization:
 /.bundle/
@@ -52,3 +53,8 @@ build-iPhoneSimulator/
 /config/credentials.yml.enc
 .fuse_hidden*
 /test/
+config/settings.local.yml
+config/settings/*.local.yml
+config/environments/*.local.yml
+log/development.log
+config/application.yml
