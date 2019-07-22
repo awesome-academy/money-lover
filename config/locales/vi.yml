@@ -1,0 +1,17 @@
+vi:
+  title:
+    base: "Money Lover"
+  sessions:
+    login: "Đăng nhập"
+    forgot_password: "Quên mật khẩu"
+    remember_me: "Lưu tài khoản"
+  button:
+    signup: "Đăng ký"
+  users:
+    create_my_account: "Tạo tài khoản"
+  error:
+    error: "Lỗi"
+    content: "The form contains"
+  flash:
+    created_account: "Tạo tài khoản thành công"
+    no_account: "Tài khoản không tồn tại"    

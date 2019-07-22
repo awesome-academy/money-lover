@@ -1,3 +1,17 @@
 en:
   title:
     base: "Money Lover"
+  sessions:
+    login: "Log in"
+    forgot_password: "Forgot password"
+    remember_me: "remember me"
+  button:
+    signup: "Sign up"
+  users:
+    create_my_account: "Create my account"
+  error:
+    error: "Error"
+    content: "The form contains"
+  flash:
+    created_account: "Created account"
+    no_account: "No account"    
