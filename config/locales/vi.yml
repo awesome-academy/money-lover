@@ -1,6 +1,7 @@
 vi:
   title:
     base: "Money Lover"
+    forgot_password: "Quên mật khẩu"
   sessions:
     login: "Đăng nhập"
     forgot_password: "Quên mật khẩu"
@@ -9,15 +10,26 @@ vi:
     logout: "Đăng xuất"
   button:
     signup: "Đăng ký"
+    send_mail: "Gửi đến mail"
+    update_password: "Cập nhật mật khẩu"
   users:
     create_my_account: "Tạo tài khoản"
     profile: "Tài khoản"
   error:
     error: "Lỗi"
     content: "The form contains"
+    not_empty: "Không được để trống"
   flash:
     created_account: "Tạo tài khoản thành công"
     no_account: "Tài khoản không tồn tại"
     invalid_account: "Sai email hoặc mật khẩu"  
+    email_invalid: "Không tìm thấy email" 
+    pass_exp: "Hết thời gian"
+    sent_password_reset: "Vui lòng kiểm tra mail để thiết lập lại mật khẩu"
+  mail:
+    password_reset: "Đặt lại mật khẩu"
+    head: "Click vào link dưới đây để thiết lập lại mật khẩu của bạn:"
+    content_expire: "Link này sẽ hết hiệu lực trog 2 giờ tới."
+    foot: "Nếu bạn không muốn thiết lập lại mật khẩu vui lòng bỏ qua mail này."  
   menu:
     account: "Tài khoản" 
