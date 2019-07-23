@@ -12,3 +12,5 @@ gravatar:
   host: "http://gravatar.com/emails"
 password_reset:
   time: 2
+filed:
+  min: 0

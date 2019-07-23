@@ -12,6 +12,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :remember_digest
       t.string :reset_digest
       t.datetime :reset_sent_at
+      t.float :month_intense
 
       t.timestamps
     end
