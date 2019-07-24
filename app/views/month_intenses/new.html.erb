@@ -1,0 +1,23 @@
+<% provide :title, t("month_intense") %>
+<div class="col-md-4 "></div>
+  <div class="col-md-4 month_intense">
+    <div class="panel panel-primary">
+      <div class="panel-heading"><%= t "month_intense" %> </div>
+      <div >
+        <%= form_for :month_intense, url: month_intenses_path do |f| %>
+          <div>
+            <div class="col-md-2"> </div>
+            <%= f.label :month_intense %>
+            <div class="col-md-2"></div>
+          </div>          
+          <div>
+            <div class="col-md-2"> </div>
+            <%= f.number_field :month_intense, class: "form_control field_month_intense col-md-8", min: Settings.filed.min %>
+            <div class="col-md-2"></div>
+          </div>
+          <%= f.submit t("button.save_month_intense"), class: "btn btn-primary btn-sm" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<div class="col-md-4"></div>

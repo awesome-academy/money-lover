@@ -12,4 +12,5 @@ Rails.application.routes.draw do
 
   resources :users
   resources :password_resets, except: %i(destroy index show)
+  resources :month_intenses
 end

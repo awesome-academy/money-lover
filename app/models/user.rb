@@ -2,6 +2,7 @@ class User < ApplicationRecord
   VALID_EMAIL_REGEX = Settings.validate.valid_email
   USER_PARAMS = %i(name email phone address username password password_confirmation).freeze
   USER_PARAMS_RESET = %i(password, password_confirmation)
+  USER_PARAMS_MONTH_INTENSE = %i(month_intense).freeze
   
   attr_accessor :remember_token, :reset_token
 
