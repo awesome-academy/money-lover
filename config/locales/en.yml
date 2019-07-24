@@ -2,7 +2,6 @@ en:
   title:
     base: "Money Lover"
     forgot_password: "Forgot password"
-    base: "Money Lover"
     info: '%{obj} Information'
     create_savings: "Create Savings"
     create: 'Create %{obj}'
@@ -19,6 +18,12 @@ en:
     update_password: "Update password"
     save_month_intense: "Save"
     close: "Close"
+    save: "Save"
+    view: "View"
+    new: "Add new"
+    update: "Update"
+    delete: "Delete"
+    back: "Back"
   users:
     create_my_account: "Create my account"
     profile: "Profile"
@@ -45,24 +50,17 @@ en:
     head: "To reset your password click the link below:"
     content_expire: "This link will expire in two hours."
     foot: "If you did not request your password to be reset, please ignore this email and your password will stay as it is."
-  menu:
-    account: "Account"
-  home: "Home"
-  month_intense: "Setup intense of month"
-
   header:
     toggle: "Toggle navigation"
     logo:
       _1: "Money"
       _2: "Lover"
-
   menu:
     manage_db: "Manage Database"
     statistic: "Statistic"
     profile: "Profile"
     account: "Account"
     logout: "Logout"
-
   table:
     title:
       users: "User Table"
@@ -79,17 +77,8 @@ en:
       savings: "Savings Rate"
       role: "Role"
       cat_name: "Category Name"
-  button:
-    save: "Save"
-    view: "View"
-    new: "Add new"
-    update: "Update"
-    delete: "Delete"
-    back: "Back"
-
   option:
     root: "<< Root >>"
-
   alert:
     confirm_del: "Are you sure?"
     created: '%{obj} Created'
@@ -101,3 +90,39 @@ en:
     welcome_admin: "Welcome to admin dashboards"
     form_contain: "The form contains"
     error: "error"
+  month_intense: "Setup intent of month"
+  month_report:
+    title:
+      base: "Money Lover"
+      month_report: "Month's Report"
+      transaction: "Transaction"
+      add_transaction: "Add Transaction"
+      amout: "Amout"
+      category: "Category"
+      note: "Name"
+      time: "Date"
+      pieChart: "Income/Expense Pie's Chart"
+      columnChart: "Income/Expense Column's Chart"
+      money: "Money"
+      lover: "Lover"
+    link_page:
+      move_chart: "*Move to Chart"
+      move_report: "*Move to Report"
+      month_report: "Month Report"
+      year_report: "Year Report"
+      category: "Category"
+      profile: "Profile"
+      logOut: "Log Out"
+      account: "Account"
+    name_column:
+      stt_col: "#"
+      category_col: "Category"
+      name_col: "Name"
+      income_col: "Income/Expense"
+      amout_col: "Amout"
+    name_chart:
+      income: "Income"
+      expense: "Expense"
+    other:
+      toggle: "Toggle navigation"
+      footer: "RubyTeam 2019 "

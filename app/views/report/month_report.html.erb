@@ -1,0 +1,115 @@
+<% provide :title, t("month_report.title.month_report") %>
+
+<div class="container">
+  <div class="row link_page">
+    <%= link_to t("month_report.link_page.move_chart"), "#chartContainer" %>
+  </div>
+  <div class="row" id="report">
+    <div class="col-md-8">
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          <h1 class="panel-title"><%= t "month_report.title.transaction"%></h1>
+        </div>
+        <div class="panel-body">
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col"><%= t "month_report.name_column.stt_col"%></th>
+                <th scope="col"><%= t "month_report.name_column.category_col"%></th>
+                <th scope="col"><%= t "month_report.name_column.name_col"%></th>
+                <th scope="col"><%= t "month_report.name_column.income_col"%></th>
+                <th scope="col"><%= t "month_report.name_column.amout_col"%></th>
+              </tr>
+            </thead>
+            <tbody>
+              <%= render "shared/table_month_report" %>
+            </tbody>
+          </table>
+          
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          <h1 class="panel-title"><%= t "month_report.title.add_transaction"%></h1>
+        </div>
+        <div class="panel-body">
+          <div class="form-group">
+            <label for="exampleInputEmail1"><%= t "month_report.title.amout"%></label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1"><%= t "month_report.title.time"%></label>
+            <div class="input-group date" id="datetimepicker3">
+              <input type="text" class="form-control" />
+              <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-time"></span>
+              </span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1"><%= t "month_report.title.category"%></label>
+            <select class="form-control add_transaction" >
+              <optgroup label="Income">
+                <option value="AK">Alaska</option>
+                <option value="HI">Hawaii</option>
+              </optgroup>
+              <optgroup label="Expense">
+                <option value="AK">Alaska</option>
+                <option value="HI">Hawaii</option>
+              </optgroup>
+              <optgroup label="Dept/Loan">
+                <option value="AK">Alaska</option>
+                <option value="HI">Hawaii</option>
+              </optgroup>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1"><%= t "month_report.title.note"%></label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
+        <%= t "month_intense" %>
+      </button>
+      <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <div class="col-md-8 month_intense">
+            <div class="panel panel-primary">
+              <div class="panel-heading"><%= t "month_intense" %> </div>
+              <div >
+                <%= form_for :month_intense, url: month_intenses_path do |f| %>
+                  <div>
+                    <div class="col-md-2"> </div>
+                    <%= f.label :month_intense %>
+                    <div class="col-md-2"></div>
+                  </div>
+                  <div>
+                    <div class="col-md-2"> </div>
+                    <%= f.number_field :month_intense, class: "form_control field_month_intense col-md-8", min: Settings.filed.min %>
+                    <div class="col-md-2"></div>
+                  </div>
+                  <%= f.submit t("button.save_month_intense"), class: "btn btn-primary btn-sm" %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="row link_page">
+    <%= link_to t("month_report.link_page.move_report"), "#report" %>
+  </div>
+  <div class="row" id="chart">
+    <div class="col-md-6">
+      <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+    </div>
+    <div class="col-md-6">
+      <div id="barChartContainer" style="height: 300px; width: 100%;"></div>
+    </div>
+  </div>
+</div>
