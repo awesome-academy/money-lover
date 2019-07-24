@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def show; end
-  
+
   def edit; end;
 
   def update
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit User::USER_PARAMS    
+      params.require(:user).permit User::USER_PARAMS
     end
 
     def load_user

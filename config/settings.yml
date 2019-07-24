@@ -4,7 +4,7 @@ validate:
   min_pass: 6
   max_content: 140
   max_address: 100
-  max_phone: 11
+  max_phone: 15
   max_username: 50
   valid_email: !ruby/regexp '/\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i'
 gravatar:
@@ -14,3 +14,6 @@ password_reset:
   time: 2
 filed:
   min: 0
+users_per_page: 10
+savings_per_page: 5
+zero: 0

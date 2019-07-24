@@ -1,0 +1,18 @@
+<% @child_cats = category.child_categories %>
+<% if @child_cats.size > Settings.zero %>
+  <div class="cat-parent">
+    <div class="category-item">
+      <span class="glyphicon glyphicon-plus-sign caret-custom"></span>
+      <%= link_to category.name, edit_admin_category_path(category), class: "cat-link" %>
+    </div>
+    <div class="list-cat-child">
+      <% @child_cats.each do |child_cat| %>
+        <%= render "category", category: child_cat %>
+      <% end %>
+    </div>
+  </div>
+<% else %>
+  <div class="category-item">
+    <%= link_to category.name, edit_admin_category_path(category), class: "cat-link" %>
+  </div>
+<% end %>

@@ -1,0 +1,11 @@
+<% provide :button_text, t("button.save") %>
+<div class="col-md-6 col-md-offset-3">
+  <div class="panel panel-primary mt-20">
+    <div class="panel-heading">
+      <%= t("title.create", obj: User.name) %>
+    </div>
+    <div class="panel-body">
+      <%= render "form" %>
+    </div>
+  </div>
+</div>
