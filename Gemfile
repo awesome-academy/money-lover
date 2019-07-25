@@ -3,7 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "2.6.3"
 
+gem "bcrypt", "~> 3.1", ">= 3.1.12"
 gem "jquery-rails"
+gem "ffaker"
 gem "bootstrap-sass", "~> 3.4", ">= 3.4.1"
 gem "rails-i18n"
 gem "i18n-js"
@@ -16,7 +18,6 @@ gem "turbolinks", "~> 5"
 gem "jbuilder", "~> 2.5"
 gem "bootsnap", ">= 1.1.0", require: false
 gem "config"
-gem "bcrypt", "3.1.12"
 gem "ffaker"
 gem "kaminari"
 gem "bootstrap-kaminari-views"

@@ -10,9 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_23_031609) do
+ActiveRecord::Schema.define(version: 2019_07_24_092429) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "name"
+    t.integer "parent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -33,6 +35,7 @@ ActiveRecord::Schema.define(version: 2019_07_23_031609) do
   end
 
   create_table "savings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.integer "saving_in_year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -49,9 +52,11 @@ ActiveRecord::Schema.define(version: 2019_07_23_031609) do
     t.string "remember_digest"
     t.string "reset_digest"
     t.datetime "reset_sent_at"
-    t.float "month_intense"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "saving_id"
+    t.index ["saving_id"], name: "index_users_on_saving_id"
   end
 
+  add_foreign_key "users", "savings"
 end

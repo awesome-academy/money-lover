@@ -1,0 +1,21 @@
+<div class="col-md-6 col-md-offset-3">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="action mb-0">
+        <%= link_to t("button.new"), new_admin_category_path, class: "btn btn-info" %>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-primary mt-20">
+    <div class="panel-heading">
+      <%= t "table.title.categories" %>
+    </div>
+    <div class="panel-body px-0">
+      <div class="categories">
+        <% @categories.each do |category| %>
+          <%= render "category", category: category %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<div class="col-md-6 col-md-offset-3" >
+  <div class="panel panel-primary mt-20">
+    <div class="panel-heading">
+      <%= t("title.create", obj: Category.name) %>
+    </div>
+    <div class="panel-body">
+      <%= form_for [:admin, @category] do |f| %>
+        <%= render "shared/error_messages", object: f.object %>
+
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "form-control" %>
+
+        <%= f.label :parent_id %>
+        <%= f.select :parent_id, options_for_select(category_options(@categories)), {include_blank: t("option.root")} %>
+
+        <%= f.submit t("button.save"), class: "btn btn-primary" %>
+        <%= link_to t("button.back"), :back, class: "btn btn-default" %>
+      <% end %>
+    </div>
+  </div>
+</div>
