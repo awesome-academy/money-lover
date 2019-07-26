@@ -4,9 +4,15 @@ class User < ApplicationRecord
   USER_PARAMS_RESET = %i(password, password_confirmation)
   USER_PARAMS_MONTH_INTENSE = %i(month_intense).freeze
 
-  belongs_to :saving, optional: true
-
   attr_accessor :remember_token, :reset_token
+
+  has_many :finances_users, dependent: :destroy
+  has_many :finances, through: :finances_users
+
+  has_many :categories_users, dependent: :destroy
+  has_many :categories, through: :categories_user
+
+  belongs_to :saving, optional: true
 
   validates :name, presence: true, length: {maximum: Settings.validate.max_name}
   validates :email, presence: true, length: {maximum: Settings.validate.max_email}, format: {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensitive: false}

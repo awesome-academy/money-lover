@@ -3,26 +3,16 @@
   Saving.create!( savingInYear: saving )
 end
 
-User.create!(name: "Example User",
-  email: "exam@mail.org",
-  phone: "123",
-  address: "HN",
-  avatar: "links",
-  username: "exampleUser",
-  admin: true,
-  password: "foobar",
-  password_confirmation: "foobar",
-  saving_id: 1)
-
-99.times do |n|
+9.times do |n|
   name  = FFaker::Name.unique.name
   email = "example-#{n+1}@railstutorial.org"
-  phone = FFaker::PhoneNumber.short_phone_number
+  phone = "09123294232"
   address = FFaker::Address.street_address
   avatar = "links"
   username = FFaker::InternetSE.user_name_random
   password = "password"
-  saving_id = 1 + Random.rand(10)
+  r = Random.new
+  saving_id = r.rand(1...9)
   User.create!(name: name,
     email: email,
     phone: phone,
@@ -34,26 +24,6 @@ User.create!(name: "Example User",
     password_confirmation: password,
     saving_id: saving_id)
 end
-
-
-
-# category_list = [
-#   ["Bills & Utilities", ["Electricity", "Gas", "Internet", "Phone", "Rental","Television", "Water"],
-#   ["Bussiness", []],
-#   ["Education", ["Books", "Learning English"]],
-#   ["Entertainment", ["Games", "Movies"]],
-#   ["Family", ["Children", "Home Improvement", "Home Services", "Pets"]],
-#   ["Fees & Charges", []],
-#   ["Food & Beverage", ["Café", "Restaurants"]],
-#   ["Friends & Lover", []],
-#   ["Gifts & Donations", ["Charity", "Funeral", "Marriage"]],
-#   ["Health & Fitness", ["Doctor", "Personal Care", "Pharmacy", "Sports"]],
-#   ["Insurances", []],
-#   ["Investment", []],
-#   ["Shopping", ["Accessories", "Clothing", "Electronics", "Footwear"]],
-#   ["Transportation", ["Maintenance", "Parking Fees", "Petrol", "Taxi"]],
-#   ["Travel", []]
-# ]
 
 root_category = [
   "Bills & Utilities",
@@ -91,4 +61,31 @@ sub_cat_4 = ["Games", "Movies"]
       parent_id: x
     )
   end
+end
+
+income = ["Salary", "Stock", "Business", "Scholarship", "Gas", "Electric", "Water", "Food", "Rental"]
+
+income.each do |x|
+  r = Random.new
+  category_id = r.rand(1...15)
+  amout = 1000000 * r.rand(1...30)
+  Finance.create!(
+    category_id: category_id,
+    name: x,
+  )
+end
+
+50.times do |n|
+  r = Random.new
+  finance_id = r.rand(1...8)
+  user_id = r.rand(1...8)
+  amout = 1000000 * r.rand(1...30)
+  random_boolean = [true, false].sample
+  FinancesUser.create!(
+    finance_id: finance_id,
+    user_id: user_id,
+    amout: amout,
+    status: random_boolean,
+    staticExpense: random_boolean
+  )
 end

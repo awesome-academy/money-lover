@@ -1,4 +1,4 @@
-@import 'bootstrap-sprockets';
-@import 'bootstrap';
-@import 'colors';
-@import 'custom';
+/*
+  *= require_tree .
+  *= require_self
+ */
