@@ -17,3 +17,5 @@ filed:
 users_per_page: 10
 savings_per_page: 5
 zero: 0
+status_income: "1"
+status_expense: "0"

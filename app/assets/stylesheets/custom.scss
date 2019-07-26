@@ -269,6 +269,7 @@ span.picture {
     padding: 0;
   }
 }
+
 #link_month_intense {
   color: $white
 }
@@ -402,18 +403,20 @@ select {
   width: auto;
 }
 
-.btn-year-saving {
-  margin-left: 30px;
-}
-
-.btn-save-report {
-
-}
-
 .panel-body.pad-35 {
   padding: 35px;
 }
 
 .mb-15 {
   margin-bottom: 15px;
+}
+
+.panel-title {
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 1px;
+}
+
+#chartContainer, #barChartContainer {
+  height: 300px;
+  width: 100%;
 }

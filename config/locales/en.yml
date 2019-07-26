@@ -126,10 +126,27 @@ en:
     other:
       toggle: "Toggle navigation"
       footer: "RubyTeam 2019 "
-    account: "Account" 
-  home: "Home" 
-  month_intense: "Intense of month"
+    account: "Account"
+  home: "Home"
   saving:
     setup: "Setup spending"
     saving: "Setup saving"
     year_saving: "Saving of year"
+  year_report:
+    title:
+      titles_year: "Year Report"
+      intent_title: "Intent's Saving"
+      incomes_title: "Income"
+      expense_title: "Expense"
+      column_title: "Income and Expense in "
+      intents: "Intent Saving In Year"
+    table:
+      name_column:
+        stt_col: "#"
+        month: "Month"
+        income: "Income"
+        expense: "Expense"
+        saved: "Savings"
+        amount: "Amount"
+    other:
+      month: " months"

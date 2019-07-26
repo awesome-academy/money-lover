@@ -10,17 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_17_040202) do
+ActiveRecord::Schema.define(version: 2019_07_23_061738) do
 
-  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name"
-    t.bigint "parent_id"
+    t.integer "parent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["parent_id"], name: "index_categories_on_parent_id"
   end
 
-  create_table "categories_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "categories_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "category_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
@@ -29,7 +28,7 @@ ActiveRecord::Schema.define(version: 2019_07_17_040202) do
     t.index ["user_id"], name: "index_categories_users_on_user_id"
   end
 
-  create_table "finances", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "finances", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "category_id"
     t.string "name"
     t.datetime "created_at", null: false
@@ -37,7 +36,7 @@ ActiveRecord::Schema.define(version: 2019_07_17_040202) do
     t.index ["category_id"], name: "index_finances_on_category_id"
   end
 
-  create_table "finances_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "finances_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "finance_id"
     t.float "amout"
@@ -45,17 +44,18 @@ ActiveRecord::Schema.define(version: 2019_07_17_040202) do
     t.boolean "staticExpense"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "date"
     t.index ["finance_id"], name: "index_finances_users_on_finance_id"
     t.index ["user_id"], name: "index_finances_users_on_user_id"
   end
 
-  create_table "savings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.float "savingInYear"
+  create_table "savings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.float "saving_in_year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.string "phone"

@@ -14,6 +14,14 @@ class User < ApplicationRecord
 
   belongs_to :saving, optional: true
 
+  has_many :finances_users
+  has_many :finances, through: :finances_users
+
+  has_many :categories_users
+  has_many :categories, through: :categories_user
+
+  belongs_to :saving
+
   validates :name, presence: true, length: {maximum: Settings.validate.max_name}
   validates :email, presence: true, length: {maximum: Settings.validate.max_email}, format: {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensitive: false}
   validates :password, presence: true, length: {minimum: Settings.validate.min_pass}, allow_nil: true
