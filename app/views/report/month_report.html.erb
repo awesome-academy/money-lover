@@ -83,12 +83,11 @@
                 <div class="panel-body pad-35 clearfix">
                   <%= form_for :month_intense, url: month_intenses_path do |f| %>
                     <div class="mb-15">
-                      <%= f.number_field :month_intense, class: "form_control field_month_intense", min: Settings.filed.min %>
+                      <%= f.text_field :month_intense, class: "form_control field_month_intense f_number1" %>
                     </div>
                     <div class="text-right">
                       <%= f.submit t("button.save_month_intense"), class: "btn btn-primary btn-sm btn-save-report" %>
                     </div>
-
                   <% end %>
                 </div>
               </div>

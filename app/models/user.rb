@@ -28,7 +28,7 @@ class User < ApplicationRecord
   validates :address, presence: true, length: {maximum: Settings.validate.max_address}
   validates :phone, presence: true, length: {maximum: Settings.validate.max_phone}
   validates :username, presence: true, length: {maximum: Settings.validate.max_username}
-  validates :month_intense, presence: true, uniqueness: true, numericality: { only_integer: true, greater_than: Settings.zero}, allow_nil: true
+  validates :month_intense, presence: true, uniqueness: true, numericality: {greater_than: Settings.zero}, allow_nil: true
 
   has_secure_password
 
