@@ -1,6 +1,6 @@
 (1..10).each do |n|
   saving = 500000*n
-  Saving.create!( savingInYear: saving )
+  Saving.create!( saving_in_year: saving )
 end
 
 9.times do |n|

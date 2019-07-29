@@ -126,3 +126,10 @@ en:
     other:
       toggle: "Toggle navigation"
       footer: "RubyTeam 2019 "
+    account: "Account" 
+  home: "Home" 
+  month_intense: "Intense of month"
+  saving:
+    setup: "Setup spending"
+    saving: "Setup saving"
+    year_saving: "Saving of year"
