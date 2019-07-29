@@ -1,6 +1,11 @@
 class FinancesUser < ApplicationRecord
+  FINANCES_USER_PARAMS = %i(amout date user_id status staticExpense).freeze
+
   belongs_to :user
   belongs_to :finance
+
+  validates :amout, presence: true
+  validates :date, presence: true
 
   scope :by_user_id, ->(id){where user_id: id}
   scope :by_status, ->(status){where status: status}

@@ -10,4 +10,5 @@ class Category < ApplicationRecord
 
   scope :root_category, -> {where parent_id: nil}
   scope :category_select, ->(cat_id) {where.not id: cat_id}
+  scope :by_user, ->(user_id){where id: CategoriesUser.where(user_id: user_id).pluck(:category_id)}
 end
