@@ -1,0 +1,126 @@
+<% provide :title, t("year_report.title.titles_year") %>
+
+<div class="container" id="report">
+  <div class="row link_page">
+    <%= link_to t("month_report.link_page.move_chart"), "#chartContainer" %>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          <h1 class="panel-title"><%= t "year_report.title.incomes_title"%></h1>
+        </div>
+        <div class="panel-body">
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col"><%= t "year_report.table.name_column.month"%></th>
+                <th scope="col"><%= t "year_report.table.name_column.income"%></th>
+              </tr>
+            </thead>
+            <tbody>
+              <%
+              @income_amout.each_with_index do |income_amout, index|
+              %>
+                <tr>
+                  <td><%= @income_amout[index][1]%> </td>
+                  <td><%= standardized(@income_amout[index][0])%></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          <h1 class="panel-title"><%= t "year_report.title.expense_title"%></h1>
+        </div>
+        <div class="panel-body">
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col"><%= t "year_report.table.name_column.month"%></th>
+                <th scope="col"><%= t "year_report.table.name_column.expense"%></th>
+              </tr>
+            </thead>
+            <tbody>
+              <%
+              @expense_amout.each_with_index do |expense_amout, index|
+              %>
+                <tr>
+                  <td><%= @expense_amout[index][1] %> </td>
+                  <td><%= standardized(@expense_amout[index][0]) %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          <h1 class="panel-title"><%= t "year_report.table.saved"%></h1>
+        </div>
+        <div class="panel-body">
+        <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col"><%= t "year_report.table.name_column.saved"%></th>
+                <th scope="col"><%= t "year_report.table.name_column.amount"%></th>
+              </tr>
+            </thead>
+            <tbody>
+              <td>
+                <%= t "year_report.table.name_column.saved"%>
+              </td>
+              <td>
+                <%= @savings %>
+              </td>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <button type="button" class="btn btn-info btn-lg btn-year-saving" data-toggle="modal" data-target="#myModal2">
+        <%= t "saving.year_saving" %>
+      </button>
+      <div id="myModal2" class="modal fade" role="dialog">
+        <div class="modal-dialog clearfix">
+          <div class="row">
+            <div class="col-md-8 col-md-offset-2 month_intense">
+              <div class="panel panel-primary">
+                <div class="panel-heading text-center"><%= t "saving.year_saving" %> </div>
+                <div class="panel-body pad-35 clearfix" >
+                  <%= form_for @saving, url: savings_path do |f| %>
+                    <div class="mb-15">
+                      <%= f.number_field :saving_in_year, class: "form_control field_month_intense", min: Settings.filed.min %>
+                    </div>
+                    <div class="text-right">
+                      <%= f.submit t("button.save_month_intense"), class: "btn btn-primary btn-sm btn-save-report" %>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <hr>
+  <div class="row" id="chart">
+    <div class="row link_page">
+      <%= link_to t("month_report.link_page.move_report"), "#report" %>
+    </div>
+    <div class="col-md-6">
+      <div id="chartContainer"></div>
+    </div>
+    <div class="col-md-6">
+      <div id="barChartContainer"></div>
+    </div>
+    <%=javascript_tag "createChart(#{@income},#{@expense})" -%>
+  </div>
+</div>

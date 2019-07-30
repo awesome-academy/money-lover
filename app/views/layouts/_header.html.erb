@@ -17,7 +17,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to t("month_report.link_page.month_report"), month_report_path%></li>
-        <li><%= link_to t("month_report.link_page.year_report")%></li>
+        <li><%= link_to t("month_report.link_page.year_report"), year_report_path%></li>
         <li><%= link_to t("month_report.link_page.category")%></li>
         <% if logged_in? %>
           <li class="dropdown">

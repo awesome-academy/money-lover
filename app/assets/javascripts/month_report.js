@@ -41,6 +41,8 @@ $( document ).on('turbolinks:load', function() {
   var total = gon.hash_gon.income_amout + gon.hash_gon.expense_amout
   var percentIncome = gon.hash_gon.income_amout/total*100
   var percentExpense = 100 - percentIncome
+  var percentIncomeString = percentIncome.toFixed(2)
+  var percentExpenseString = percentExpense.toFixed(2)
   var chart = new CanvasJS.Chart('chartContainer', {
     theme: 'light2', // 'light1', 'light2', 'dark1', 'dark2'
     exportEnabled: true,
@@ -57,8 +59,8 @@ $( document ).on('turbolinks:load', function() {
       indexLabelFontSize: 16,
       indexLabel: '{label} - {y}%',
       dataPoints: [
-        { y: percentIncome, label: I18n.t('month_report.name_chart.income') },
-        { y: percentExpense, label: I18n.t('month_report.name_chart.expense') },
+        { y: percentIncomeString, label: I18n.t('month_report.name_chart.income') },
+        { y: percentExpenseString, label: I18n.t('month_report.name_chart.expense') },
       ]
     }]
   });

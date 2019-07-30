@@ -4,14 +4,14 @@
 end
 
 9.times do |n|
+  r = Random.new
   name  = FFaker::Name.unique.name
   email = "example-#{n+1}@railstutorial.org"
-  phone = "09123294232"
+  phone = 10000000000 + r.rand(1...9999999)
   address = FFaker::Address.street_address
   avatar = "links"
   username = FFaker::InternetSE.user_name_random
   password = "password"
-  r = Random.new
   saving_id = r.rand(1...9)
   User.create!(name: name,
     email: email,
@@ -75,6 +75,11 @@ income.each do |x|
   )
 end
 
+def random_date_in_year(year)
+  return rand(Date.civil(year.min, 1, 1)..Date.civil(year.max, 30, 6)) if year.kind_of?(Range)
+  rand(Date.civil(year, 1, 1)..Date.civil(year, 12, 31))
+end
+
 50.times do |n|
   r = Random.new
   finance_id = r.rand(1...8)
@@ -86,6 +91,7 @@ end
     user_id: user_id,
     amout: amout,
     status: random_boolean,
-    staticExpense: random_boolean
+    staticExpense: random_boolean,
+    date: random_date_in_year(2019)
   )
 end

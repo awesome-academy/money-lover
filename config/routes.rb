@@ -8,9 +8,8 @@ Rails.application.routes.draw do
   get "/login", to: "sessions#new"
   get "/month_report", to: "report#month_report"
   get "/admin", to: "admin/dashboard#index"
-
+  get "/year_report", to: "report#year_report"
   post "/login", to: "sessions#create"
-  
   delete "/logout",  to: "sessions#destroy"
 
   resources :users
