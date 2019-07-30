@@ -8,5 +8,6 @@ class ReportController < ApplicationController
     expense_amout: expense_transactions.pluck(:amout).sum}
 
     @number_transactions = JSON.parse(@transactions.to_json).size
+    @saving = Saving.new
   end
 end

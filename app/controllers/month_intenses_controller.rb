@@ -6,11 +6,10 @@ class MonthIntensesController < ApplicationController
   def create
     if current_user.update user_params
       flash[:success] = t "flash.success"
-      redirect_to root_path
     else
       flash[:danger] = t "flash.update_fail"
-      render :new
     end
+    redirect_to month_report_path
   end
 
   private
