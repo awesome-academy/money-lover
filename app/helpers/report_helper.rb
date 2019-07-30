@@ -9,7 +9,7 @@ module ReportHelper
     income - expense
   end
 
-  def standardized(num)
+  def standardized num
     num.round(0).to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
   end
 end

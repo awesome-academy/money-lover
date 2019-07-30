@@ -32,6 +32,8 @@ class User < ApplicationRecord
 
   has_secure_password
 
+  scope :by_user_id, ->(id){where id: id}
+
   def remember
     self.remember_token = User.new_token
     update remember_digest: User.digest(remember_token)

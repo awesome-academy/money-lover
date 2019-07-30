@@ -131,7 +131,7 @@ en:
   saving:
     setup: "Setup spending"
     saving: "Setup saving"
-    year_saving: "Saving of year"
+    year_saving: "Setting saving of year"
   year_report:
     title:
       titles_year: "Year Report"
@@ -139,7 +139,7 @@ en:
       incomes_title: "Income"
       expense_title: "Expense"
       column_title: "Income and Expense in "
-      intents: "Intent Saving In Year"
+      intents_title: "Intent Saving In Year"
     table:
       name_column:
         stt_col: "#"
@@ -148,5 +148,6 @@ en:
         expense: "Expense"
         saved: "Savings"
         amount: "Amount"
+        intense: "Intense"
     other:
       month: " months"

@@ -53106,3 +53106,388 @@ Processing by ReportController#month_report as HTML
 Completed 200 OK in 158ms (Views: 109.7ms | ActiveRecord: 12.5ms)
 
 
+Started GET "/year_report" for ::1 at 2019-07-30 15:10:16 +0700
+  [1m[35m (2.0ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /home/asus/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /home/asus/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ReportController#year_report as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/helpers/sessions_helper.rb:8
+  [1m[36mFinancesUser Load (1.1ms)[0m  [1m[34mSELECT `finances_users`.`amout` FROM `finances_users` WHERE ((date between DATE_FORMAT(NOW(),'%Y-01-01')
+    AND NOW())) AND `finances_users`.`user_id` = 1 AND `finances_users`.`status` = TRUE[0m
+  ↳ app/services/year_service.rb:34
+  [1m[36mFinancesUser Load (1.2ms)[0m  [1m[34mSELECT `finances_users`.`amout` FROM `finances_users` WHERE ((date between DATE_FORMAT(NOW(),'%Y-01-01')
+    AND NOW())) AND `finances_users`.`user_id` = 1 AND `finances_users`.`status` = FALSE[0m
+  ↳ app/services/year_service.rb:34
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sum(amout) as sum_amount, monthname(date) as month_name, status FROM `finances_users` WHERE `finances_users`.`user_id` = 1 AND `finances_users`.`status` = TRUE AND `finances_users`.`date` BETWEEN '2019-01-01' AND '2019-07-30' GROUP BY `month_name`[0m
+  ↳ app/models/finances_user.rb:9
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT sum(amout) as sum_amount, monthname(date) as month_name, status FROM `finances_users` WHERE `finances_users`.`user_id` = 1 AND `finances_users`.`status` = FALSE AND `finances_users`.`date` BETWEEN '2019-01-01' AND '2019-07-30' GROUP BY `month_name`[0m
+  ↳ app/models/finances_user.rb:9
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT `users`.`saving_id` FROM `users` WHERE `users`.`id` = 1[0m
+  ↳ app/services/year_service.rb:42
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT `savings`.`saving_in_year` FROM `savings` WHERE `savings`.`id` = 10[0m
+  ↳ app/services/year_service.rb:43
+  Rendering report/year_report.html.erb within layouts/application
+  Rendered shared/_table_intense_report.html.erb (2.1ms)
+  Rendered report/year_report.html.erb within layouts/application (24.5ms)
+  Rendered layouts/_shrim.html.erb (1.1ms)
+  Rendered layouts/_header.html.erb (21.8ms)
+  Rendered layouts/_footer.html.erb (1.3ms)
+Completed 200 OK in 3448ms (Views: 3194.0ms | ActiveRecord: 25.1ms)
+
+
+Started POST "/savings" for ::1 at 2019-07-30 15:10:32 +0700
+Processing by SavingsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"KBgZI9v+8ZIfim0P8cownKNJBLS98sHWOkrCbIQYRwAEhlSk8uBTesUqfNDz8KXLKoNub9tH4XDwbJV9lipLbA==", "saving"=>{"saving_in_year"=>"19,000,000"}, "commit"=>"Save"}
+  [1m[36mSaving Load (1.2ms)[0m  [1m[34mSELECT  `savings`.* FROM `savings` WHERE `savings`.`saving_in_year` = 19000000.0 LIMIT 1[0m
+  ↳ app/controllers/savings_controller.rb:8
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/savings_controller.rb:9
+  [1m[36mSaving Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM `savings` WHERE `savings`.`saving_in_year` = 19000000.0 LIMIT 1[0m
+  ↳ app/controllers/savings_controller.rb:10
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/helpers/sessions_helper.rb:8
+  [1m[36mUser Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = 'example-1@railstutorial.org' AND `users`.`id` != 1 LIMIT 1[0m
+  ↳ app/controllers/savings_controller.rb:11
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/savings_controller.rb:9
+Redirected to http://localhost:3000/year_report
+Completed 302 Found in 56ms (ActiveRecord: 5.9ms)
+
+
+Started GET "/year_report" for ::1 at 2019-07-30 15:10:32 +0700
+Processing by ReportController#year_report as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/helpers/sessions_helper.rb:8
+  [1m[36mFinancesUser Load (1.1ms)[0m  [1m[34mSELECT `finances_users`.`amout` FROM `finances_users` WHERE ((date between DATE_FORMAT(NOW(),'%Y-01-01')
+    AND NOW())) AND `finances_users`.`user_id` = 1 AND `finances_users`.`status` = TRUE[0m
+  ↳ app/services/year_service.rb:34
+  [1m[36mFinancesUser Load (2.1ms)[0m  [1m[34mSELECT `finances_users`.`amout` FROM `finances_users` WHERE ((date between DATE_FORMAT(NOW(),'%Y-01-01')
+    AND NOW())) AND `finances_users`.`user_id` = 1 AND `finances_users`.`status` = FALSE[0m
+  ↳ app/services/year_service.rb:34
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT sum(amout) as sum_amount, monthname(date) as month_name, status FROM `finances_users` WHERE `finances_users`.`user_id` = 1 AND `finances_users`.`status` = TRUE AND `finances_users`.`date` BETWEEN '2019-01-01' AND '2019-07-30' GROUP BY `month_name`[0m
+  ↳ app/models/finances_user.rb:9
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT sum(amout) as sum_amount, monthname(date) as month_name, status FROM `finances_users` WHERE `finances_users`.`user_id` = 1 AND `finances_users`.`status` = FALSE AND `finances_users`.`date` BETWEEN '2019-01-01' AND '2019-07-30' GROUP BY `month_name`[0m
+  ↳ app/models/finances_user.rb:9
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT `users`.`saving_id` FROM `users` WHERE `users`.`id` = 1[0m
+  ↳ app/services/year_service.rb:42
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT `savings`.`saving_in_year` FROM `savings` WHERE `savings`.`id` = 10[0m
+  ↳ app/services/year_service.rb:43
+  Rendering report/year_report.html.erb within layouts/application
+  Rendered shared/_table_intense_report.html.erb (2.3ms)
+  Rendered report/year_report.html.erb within layouts/application (12.1ms)
+  Rendered layouts/_shrim.html.erb (0.7ms)
+  Rendered layouts/_header.html.erb (13.0ms)
+  Rendered layouts/_footer.html.erb (1.8ms)
+Completed 200 OK in 437ms (Views: 394.7ms | ActiveRecord: 10.1ms)
+
+
+Started POST "/savings" for ::1 at 2019-07-30 15:10:49 +0700
+Processing by SavingsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Hr0WbNGwd3CBRXnIkxSPqZU06oYjtWj7QmMLFo7rGgIyI1vr+K7VmFvlaBeRLhr+HP6AXUUASF2IRVwHnNkWbg==", "saving"=>{"saving_in_year"=>"20,000,000"}, "commit"=>"Save"}
+  [1m[36mSaving Load (0.8ms)[0m  [1m[34mSELECT  `savings`.* FROM `savings` WHERE `savings`.`saving_in_year` = 20000000.0 LIMIT 1[0m
+  ↳ app/controllers/savings_controller.rb:8
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/savings_controller.rb:9
+  [1m[36mSaving Exists (1.4ms)[0m  [1m[34mSELECT  1 AS one FROM `savings` WHERE `savings`.`saving_in_year` = 20000000.0 LIMIT 1[0m
+  ↳ app/controllers/savings_controller.rb:10
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/helpers/sessions_helper.rb:8
+  [1m[36mUser Exists (1.4ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = 'example-1@railstutorial.org' AND `users`.`id` != 1 LIMIT 1[0m
+  ↳ app/controllers/savings_controller.rb:11
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/savings_controller.rb:9
+Redirected to http://localhost:3000/year_report
+Completed 302 Found in 60ms (ActiveRecord: 5.5ms)
+
+
+Started GET "/year_report" for ::1 at 2019-07-30 15:10:49 +0700
+Processing by ReportController#year_report as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/helpers/sessions_helper.rb:8
+  [1m[36mFinancesUser Load (1.4ms)[0m  [1m[34mSELECT `finances_users`.`amout` FROM `finances_users` WHERE ((date between DATE_FORMAT(NOW(),'%Y-01-01')
+    AND NOW())) AND `finances_users`.`user_id` = 1 AND `finances_users`.`status` = TRUE[0m
+  ↳ app/services/year_service.rb:34
+  [1m[36mFinancesUser Load (1.7ms)[0m  [1m[34mSELECT `finances_users`.`amout` FROM `finances_users` WHERE ((date between DATE_FORMAT(NOW(),'%Y-01-01')
+    AND NOW())) AND `finances_users`.`user_id` = 1 AND `finances_users`.`status` = FALSE[0m
+  ↳ app/services/year_service.rb:34
+  [1m[35m (2.4ms)[0m  [1m[34mSELECT sum(amout) as sum_amount, monthname(date) as month_name, status FROM `finances_users` WHERE `finances_users`.`user_id` = 1 AND `finances_users`.`status` = TRUE AND `finances_users`.`date` BETWEEN '2019-01-01' AND '2019-07-30' GROUP BY `month_name`[0m
+  ↳ app/models/finances_user.rb:9
+  [1m[35m (2.4ms)[0m  [1m[34mSELECT sum(amout) as sum_amount, monthname(date) as month_name, status FROM `finances_users` WHERE `finances_users`.`user_id` = 1 AND `finances_users`.`status` = FALSE AND `finances_users`.`date` BETWEEN '2019-01-01' AND '2019-07-30' GROUP BY `month_name`[0m
+  ↳ app/models/finances_user.rb:9
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT `users`.`saving_id` FROM `users` WHERE `users`.`id` = 1[0m
+  ↳ app/services/year_service.rb:42
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT `savings`.`saving_in_year` FROM `savings` WHERE `savings`.`id` = 10[0m
+  ↳ app/services/year_service.rb:43
+  Rendering report/year_report.html.erb within layouts/application
+  Rendered shared/_table_intense_report.html.erb (5.2ms)
+  Rendered report/year_report.html.erb within layouts/application (24.2ms)
+  Rendered layouts/_shrim.html.erb (0.8ms)
+  Rendered layouts/_header.html.erb (5.4ms)
+  Rendered layouts/_footer.html.erb (1.4ms)
+Completed 200 OK in 400ms (Views: 344.3ms | ActiveRecord: 11.8ms)
+
+
+Started POST "/savings" for ::1 at 2019-07-30 15:11:14 +0700
+Processing by SavingsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"TLRAOGxZpmZERK56l74TTY+jXfrJigI1USSeGoWHqgBgKg2/RUcEjp7kv6WVhIYaBmk3Ia8/IpObAskLl7WmbA==", "saving"=>{"saving_in_year"=>"19,000,000"}, "commit"=>"Save"}
+  [1m[36mSaving Load (0.9ms)[0m  [1m[34mSELECT  `savings`.* FROM `savings` WHERE `savings`.`saving_in_year` = 19000000.0 LIMIT 1[0m
+  ↳ app/controllers/savings_controller.rb:8
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/savings_controller.rb:9
+  [1m[36mSaving Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM `savings` WHERE `savings`.`saving_in_year` = 19000000.0 LIMIT 1[0m
+  ↳ app/controllers/savings_controller.rb:10
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/helpers/sessions_helper.rb:8
+  [1m[36mUser Exists (1.4ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = 'example-1@railstutorial.org' AND `users`.`id` != 1 LIMIT 1[0m
+  ↳ app/controllers/savings_controller.rb:11
+  [1m[35m (0.6ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/savings_controller.rb:9
+Redirected to http://localhost:3000/year_report
+Completed 302 Found in 33ms (ActiveRecord: 5.1ms)
+
+
+Started GET "/year_report" for ::1 at 2019-07-30 15:11:14 +0700
+Processing by ReportController#year_report as HTML
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/helpers/sessions_helper.rb:8
+  [1m[36mFinancesUser Load (1.1ms)[0m  [1m[34mSELECT `finances_users`.`amout` FROM `finances_users` WHERE ((date between DATE_FORMAT(NOW(),'%Y-01-01')
+    AND NOW())) AND `finances_users`.`user_id` = 1 AND `finances_users`.`status` = TRUE[0m
+  ↳ app/services/year_service.rb:34
+  [1m[36mFinancesUser Load (1.2ms)[0m  [1m[34mSELECT `finances_users`.`amout` FROM `finances_users` WHERE ((date between DATE_FORMAT(NOW(),'%Y-01-01')
+    AND NOW())) AND `finances_users`.`user_id` = 1 AND `finances_users`.`status` = FALSE[0m
+  ↳ app/services/year_service.rb:34
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT sum(amout) as sum_amount, monthname(date) as month_name, status FROM `finances_users` WHERE `finances_users`.`user_id` = 1 AND `finances_users`.`status` = TRUE AND `finances_users`.`date` BETWEEN '2019-01-01' AND '2019-07-30' GROUP BY `month_name`[0m
+  ↳ app/models/finances_user.rb:9
+  [1m[35m (3.6ms)[0m  [1m[34mSELECT sum(amout) as sum_amount, monthname(date) as month_name, status FROM `finances_users` WHERE `finances_users`.`user_id` = 1 AND `finances_users`.`status` = FALSE AND `finances_users`.`date` BETWEEN '2019-01-01' AND '2019-07-30' GROUP BY `month_name`[0m
+  ↳ app/models/finances_user.rb:9
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT `users`.`saving_id` FROM `users` WHERE `users`.`id` = 1[0m
+  ↳ app/services/year_service.rb:42
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT `savings`.`saving_in_year` FROM `savings` WHERE `savings`.`id` = 10[0m
+  ↳ app/services/year_service.rb:43
+  Rendering report/year_report.html.erb within layouts/application
+  Rendered shared/_table_intense_report.html.erb (1.9ms)
+  Rendered report/year_report.html.erb within layouts/application (15.4ms)
+  Rendered layouts/_shrim.html.erb (0.8ms)
+  Rendered layouts/_header.html.erb (8.0ms)
+  Rendered layouts/_footer.html.erb (2.1ms)
+Completed 200 OK in 292ms (Views: 248.3ms | ActiveRecord: 11.3ms)
+
+
+Started GET "/year_report" for ::1 at 2019-07-30 15:11:45 +0700
+Processing by ReportController#year_report as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/helpers/sessions_helper.rb:8
+  [1m[36mFinancesUser Load (1.2ms)[0m  [1m[34mSELECT `finances_users`.`amout` FROM `finances_users` WHERE ((date between DATE_FORMAT(NOW(),'%Y-01-01')
+    AND NOW())) AND `finances_users`.`user_id` = 1 AND `finances_users`.`status` = TRUE[0m
+  ↳ app/services/year_service.rb:34
+  [1m[36mFinancesUser Load (2.3ms)[0m  [1m[34mSELECT `finances_users`.`amout` FROM `finances_users` WHERE ((date between DATE_FORMAT(NOW(),'%Y-01-01')
+    AND NOW())) AND `finances_users`.`user_id` = 1 AND `finances_users`.`status` = FALSE[0m
+  ↳ app/services/year_service.rb:34
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT sum(amout) as sum_amount, monthname(date) as month_name, status FROM `finances_users` WHERE `finances_users`.`user_id` = 1 AND `finances_users`.`status` = TRUE AND `finances_users`.`date` BETWEEN '2019-01-01' AND '2019-07-30' GROUP BY `month_name`[0m
+  ↳ app/models/finances_user.rb:9
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT sum(amout) as sum_amount, monthname(date) as month_name, status FROM `finances_users` WHERE `finances_users`.`user_id` = 1 AND `finances_users`.`status` = FALSE AND `finances_users`.`date` BETWEEN '2019-01-01' AND '2019-07-30' GROUP BY `month_name`[0m
+  ↳ app/models/finances_user.rb:9
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT `users`.`saving_id` FROM `users` WHERE `users`.`id` = 1[0m
+  ↳ app/services/year_service.rb:42
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT `savings`.`saving_in_year` FROM `savings` WHERE `savings`.`id` = 10[0m
+  ↳ app/services/year_service.rb:43
+  Rendering report/year_report.html.erb within layouts/application
+  Rendered shared/_table_intense_report.html.erb (2.1ms)
+  Rendered report/year_report.html.erb within layouts/application (15.2ms)
+  Rendered layouts/_shrim.html.erb (1.0ms)
+  Rendered layouts/_header.html.erb (9.0ms)
+  Rendered layouts/_footer.html.erb (1.9ms)
+Completed 200 OK in 491ms (Views: 258.2ms | ActiveRecord: 23.4ms)
+
+
+Started POST "/savings" for ::1 at 2019-07-30 15:11:51 +0700
+Processing by SavingsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Hz5bfyDaJFCpjyLDGaTOhtFnEbbMjqUDLOPElWllNpMzoBb4CcSGuHMvMxwbnlvRWK17bao7haXmxZOEe1c6/w==", "saving"=>{"saving_in_year"=>"19,000,000"}, "commit"=>"Save"}
+  [1m[36mSaving Load (1.0ms)[0m  [1m[34mSELECT  `savings`.* FROM `savings` WHERE `savings`.`saving_in_year` = 19000000.0 LIMIT 1[0m
+  ↳ app/controllers/savings_controller.rb:8
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/savings_controller.rb:9
+  [1m[36mSaving Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM `savings` WHERE `savings`.`saving_in_year` = 19000000.0 LIMIT 1[0m
+  ↳ app/controllers/savings_controller.rb:10
+  [1m[36mSaving Create (1.1ms)[0m  [1m[32mINSERT INTO `savings` (`saving_in_year`, `created_at`, `updated_at`) VALUES (19000000.0, '2019-07-30 08:11:51', '2019-07-30 08:11:51')[0m
+  ↳ app/controllers/savings_controller.rb:10
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/helpers/sessions_helper.rb:8
+  [1m[36mSaving Load (0.9ms)[0m  [1m[34mSELECT  `savings`.* FROM `savings` WHERE `savings`.`id` = 12 LIMIT 1[0m
+  ↳ app/controllers/savings_controller.rb:11
+  [1m[36mUser Exists (1.1ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = 'example-1@railstutorial.org' AND `users`.`id` != 1 LIMIT 1[0m
+  ↳ app/controllers/savings_controller.rb:11
+  [1m[36mUser Update (1.1ms)[0m  [1m[33mUPDATE `users` SET `saving_id` = 12, `updated_at` = '2019-07-30 08:11:51' WHERE `users`.`id` = 1[0m
+  ↳ app/controllers/savings_controller.rb:11
+  [1m[35m (8.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/savings_controller.rb:9
+Redirected to http://localhost:3000/year_report
+Completed 302 Found in 69ms (ActiveRecord: 15.9ms)
+
+
+Started GET "/year_report" for ::1 at 2019-07-30 15:11:51 +0700
+Processing by ReportController#year_report as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/helpers/sessions_helper.rb:8
+  [1m[36mFinancesUser Load (1.7ms)[0m  [1m[34mSELECT `finances_users`.`amout` FROM `finances_users` WHERE ((date between DATE_FORMAT(NOW(),'%Y-01-01')
+    AND NOW())) AND `finances_users`.`user_id` = 1 AND `finances_users`.`status` = TRUE[0m
+  ↳ app/services/year_service.rb:34
+  [1m[36mFinancesUser Load (1.0ms)[0m  [1m[34mSELECT `finances_users`.`amout` FROM `finances_users` WHERE ((date between DATE_FORMAT(NOW(),'%Y-01-01')
+    AND NOW())) AND `finances_users`.`user_id` = 1 AND `finances_users`.`status` = FALSE[0m
+  ↳ app/services/year_service.rb:34
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT sum(amout) as sum_amount, monthname(date) as month_name, status FROM `finances_users` WHERE `finances_users`.`user_id` = 1 AND `finances_users`.`status` = TRUE AND `finances_users`.`date` BETWEEN '2019-01-01' AND '2019-07-30' GROUP BY `month_name`[0m
+  ↳ app/models/finances_user.rb:9
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sum(amout) as sum_amount, monthname(date) as month_name, status FROM `finances_users` WHERE `finances_users`.`user_id` = 1 AND `finances_users`.`status` = FALSE AND `finances_users`.`date` BETWEEN '2019-01-01' AND '2019-07-30' GROUP BY `month_name`[0m
+  ↳ app/models/finances_user.rb:9
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT `users`.`saving_id` FROM `users` WHERE `users`.`id` = 1[0m
+  ↳ app/services/year_service.rb:42
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT `savings`.`saving_in_year` FROM `savings` WHERE `savings`.`id` = 12[0m
+  ↳ app/services/year_service.rb:43
+  Rendering report/year_report.html.erb within layouts/application
+  Rendered shared/_table_intense_report.html.erb (2.6ms)
+  Rendered report/year_report.html.erb within layouts/application (16.4ms)
+  Rendered layouts/_shrim.html.erb (1.8ms)
+  Rendered layouts/_header.html.erb (6.7ms)
+  Rendered layouts/_footer.html.erb (1.3ms)
+Completed 200 OK in 370ms (Views: 325.7ms | ActiveRecord: 8.5ms)
+
+
+Started GET "/month_report" for ::1 at 2019-07-30 15:12:20 +0700
+Processing by ReportController#month_report as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/helpers/sessions_helper.rb:8
+  [1m[36mFinancesUser Load (0.8ms)[0m  [1m[34mSELECT `finances_users`.* FROM `finances_users` WHERE `finances_users`.`user_id` = 1[0m
+  ↳ app/controllers/report_controller.rb:8
+  [1m[36mFinance Load (0.8ms)[0m  [1m[34mSELECT `finances`.* FROM `finances` WHERE `finances`.`id` IN (4, 6, 2, 5, 7)[0m
+  ↳ app/controllers/report_controller.rb:8
+  [1m[36mFinancesUser Load (0.9ms)[0m  [1m[34mSELECT `finances_users`.* FROM `finances_users` WHERE `finances_users`.`user_id` = 1 AND `finances_users`.`status` = TRUE[0m
+  ↳ app/controllers/report_controller.rb:8
+  [1m[36mFinance Load (0.9ms)[0m  [1m[34mSELECT `finances`.* FROM `finances` WHERE `finances`.`id` IN (4, 2, 5, 6, 7)[0m
+  ↳ app/controllers/report_controller.rb:8
+  Rendering report/month_report.html.erb within layouts/application
+  [1m[36mCategory Load (1.1ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 7 LIMIT 1[0m
+  ↳ app/models/finance.rb:6
+  [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 2 LIMIT 1[0m
+  ↳ app/models/finance.rb:6
+  [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 13 LIMIT 1[0m
+  ↳ app/models/finance.rb:6
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 13 LIMIT 1[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/models/finance.rb:6
+  [1m[36mCategory Load (1.1ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 9 LIMIT 1[0m
+  ↳ app/models/finance.rb:6
+  Rendered shared/_table_month_report.html.erb (73.2ms)
+  Rendered report/month_report.html.erb within layouts/application (83.8ms)
+  Rendered layouts/_shrim.html.erb (1.0ms)
+  Rendered layouts/_header.html.erb (8.2ms)
+  Rendered layouts/_footer.html.erb (1.3ms)
+Completed 200 OK in 513ms (Views: 307.3ms | ActiveRecord: 21.3ms)
+
+
+Started GET "/year_report" for ::1 at 2019-07-30 15:13:55 +0700
+Processing by ReportController#year_report as HTML
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/helpers/sessions_helper.rb:8
+  [1m[36mFinancesUser Load (1.4ms)[0m  [1m[34mSELECT `finances_users`.`amout` FROM `finances_users` WHERE ((date between DATE_FORMAT(NOW(),'%Y-01-01')
+    AND NOW())) AND `finances_users`.`user_id` = 1 AND `finances_users`.`status` = TRUE[0m
+  ↳ app/services/year_service.rb:34
+  [1m[36mFinancesUser Load (1.5ms)[0m  [1m[34mSELECT `finances_users`.`amout` FROM `finances_users` WHERE ((date between DATE_FORMAT(NOW(),'%Y-01-01')
+    AND NOW())) AND `finances_users`.`user_id` = 1 AND `finances_users`.`status` = FALSE[0m
+  ↳ app/services/year_service.rb:34
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT sum(amout) as sum_amount, monthname(date) as month_name, status FROM `finances_users` WHERE `finances_users`.`user_id` = 1 AND `finances_users`.`status` = TRUE AND `finances_users`.`date` BETWEEN '2019-01-01' AND '2019-07-30' GROUP BY `month_name`[0m
+  ↳ app/models/finances_user.rb:9
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT sum(amout) as sum_amount, monthname(date) as month_name, status FROM `finances_users` WHERE `finances_users`.`user_id` = 1 AND `finances_users`.`status` = FALSE AND `finances_users`.`date` BETWEEN '2019-01-01' AND '2019-07-30' GROUP BY `month_name`[0m
+  ↳ app/models/finances_user.rb:9
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT `users`.`saving_id` FROM `users` WHERE `users`.`id` = 1[0m
+  ↳ app/services/year_service.rb:42
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT `savings`.`saving_in_year` FROM `savings` WHERE `savings`.`id` = 12[0m
+  ↳ app/services/year_service.rb:43
+  Rendering report/year_report.html.erb within layouts/application
+  Rendered shared/_table_intense_report.html.erb (2.4ms)
+  Rendered report/year_report.html.erb within layouts/application (17.2ms)
+  Rendered layouts/_shrim.html.erb (1.2ms)
+  Rendered layouts/_header.html.erb (7.1ms)
+  Rendered layouts/_footer.html.erb (2.7ms)
+Completed 200 OK in 412ms (Views: 296.1ms | ActiveRecord: 12.8ms)
+
+
+Started GET "/year_report" for ::1 at 2019-07-30 15:14:42 +0700
+Processing by ReportController#year_report as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/helpers/sessions_helper.rb:8
+  [1m[36mFinancesUser Load (1.0ms)[0m  [1m[34mSELECT `finances_users`.`amout` FROM `finances_users` WHERE ((date between DATE_FORMAT(NOW(),'%Y-01-01')
+    AND NOW())) AND `finances_users`.`user_id` = 1 AND `finances_users`.`status` = TRUE[0m
+  ↳ app/services/year_service.rb:34
+  [1m[36mFinancesUser Load (1.3ms)[0m  [1m[34mSELECT `finances_users`.`amout` FROM `finances_users` WHERE ((date between DATE_FORMAT(NOW(),'%Y-01-01')
+    AND NOW())) AND `finances_users`.`user_id` = 1 AND `finances_users`.`status` = FALSE[0m
+  ↳ app/services/year_service.rb:34
+  [1m[35m (4.2ms)[0m  [1m[34mSELECT sum(amout) as sum_amount, monthname(date) as month_name, status FROM `finances_users` WHERE `finances_users`.`user_id` = 1 AND `finances_users`.`status` = TRUE AND `finances_users`.`date` BETWEEN '2019-01-01' AND '2019-07-30' GROUP BY `month_name`[0m
+  ↳ app/models/finances_user.rb:9
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT sum(amout) as sum_amount, monthname(date) as month_name, status FROM `finances_users` WHERE `finances_users`.`user_id` = 1 AND `finances_users`.`status` = FALSE AND `finances_users`.`date` BETWEEN '2019-01-01' AND '2019-07-30' GROUP BY `month_name`[0m
+  ↳ app/models/finances_user.rb:9
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT `users`.`saving_id` FROM `users` WHERE `users`.`id` = 1[0m
+  ↳ app/services/year_service.rb:42
+  [1m[35m (3.4ms)[0m  [1m[34mSELECT `savings`.`saving_in_year` FROM `savings` WHERE `savings`.`id` = 12[0m
+  ↳ app/services/year_service.rb:43
+  Rendering report/year_report.html.erb within layouts/application
+  Rendered shared/_table_intense_report.html.erb (2.4ms)
+  Rendered report/year_report.html.erb within layouts/application (15.7ms)
+  Rendered layouts/_shrim.html.erb (1.1ms)
+  Rendered layouts/_header.html.erb (10.2ms)
+  Rendered layouts/_footer.html.erb (1.4ms)
+Completed 200 OK in 1253ms (Views: 1019.4ms | ActiveRecord: 23.6ms)
+
+
+Started POST "/savings" for ::1 at 2019-07-30 15:15:08 +0700
+Processing by SavingsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"cHKixiV2jKV59LJKPigEaScoVeb+oRSU6nYUk1DlMnJc7O9BDGguTaNUo5U8EpE+ruI/PZgUNDIgUEOCQtc+Hg==", "saving"=>{"saving_in_year"=>"20,000,000"}, "commit"=>"Save"}
+  [1m[36mSaving Load (1.0ms)[0m  [1m[34mSELECT  `savings`.* FROM `savings` WHERE `savings`.`saving_in_year` = 20000000.0 LIMIT 1[0m
+  ↳ app/controllers/savings_controller.rb:8
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/savings_controller.rb:9
+  [1m[36mSaving Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM `savings` WHERE `savings`.`saving_in_year` = 20000000.0 LIMIT 1[0m
+  ↳ app/controllers/savings_controller.rb:10
+  [1m[36mSaving Create (1.5ms)[0m  [1m[32mINSERT INTO `savings` (`saving_in_year`, `created_at`, `updated_at`) VALUES (20000000.0, '2019-07-30 08:15:08', '2019-07-30 08:15:08')[0m
+  ↳ app/controllers/savings_controller.rb:10
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/helpers/sessions_helper.rb:8
+  [1m[36mSaving Load (1.2ms)[0m  [1m[34mSELECT  `savings`.* FROM `savings` WHERE `savings`.`id` = 13 LIMIT 1[0m
+  ↳ app/controllers/savings_controller.rb:11
+  [1m[36mUser Exists (1.4ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = 'example-1@railstutorial.org' AND `users`.`id` != 1 LIMIT 1[0m
+  ↳ app/controllers/savings_controller.rb:11
+  [1m[36mUser Update (2.3ms)[0m  [1m[33mUPDATE `users` SET `saving_id` = 13, `updated_at` = '2019-07-30 08:15:08' WHERE `users`.`id` = 1[0m
+  ↳ app/controllers/savings_controller.rb:11
+  [1m[35m (10.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/savings_controller.rb:9
+Redirected to http://localhost:3000/year_report
+Completed 302 Found in 66ms (ActiveRecord: 20.1ms)
+
+
+Started GET "/year_report" for ::1 at 2019-07-30 15:15:08 +0700
+Processing by ReportController#year_report as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/helpers/sessions_helper.rb:8
+  [1m[36mFinancesUser Load (1.2ms)[0m  [1m[34mSELECT `finances_users`.`amout` FROM `finances_users` WHERE ((date between DATE_FORMAT(NOW(),'%Y-01-01')
+    AND NOW())) AND `finances_users`.`user_id` = 1 AND `finances_users`.`status` = TRUE[0m
+  ↳ app/services/year_service.rb:34
+  [1m[36mFinancesUser Load (1.4ms)[0m  [1m[34mSELECT `finances_users`.`amout` FROM `finances_users` WHERE ((date between DATE_FORMAT(NOW(),'%Y-01-01')
+    AND NOW())) AND `finances_users`.`user_id` = 1 AND `finances_users`.`status` = FALSE[0m
+  ↳ app/services/year_service.rb:34
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT sum(amout) as sum_amount, monthname(date) as month_name, status FROM `finances_users` WHERE `finances_users`.`user_id` = 1 AND `finances_users`.`status` = TRUE AND `finances_users`.`date` BETWEEN '2019-01-01' AND '2019-07-30' GROUP BY `month_name`[0m
+  ↳ app/models/finances_user.rb:9
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT sum(amout) as sum_amount, monthname(date) as month_name, status FROM `finances_users` WHERE `finances_users`.`user_id` = 1 AND `finances_users`.`status` = FALSE AND `finances_users`.`date` BETWEEN '2019-01-01' AND '2019-07-30' GROUP BY `month_name`[0m
+  ↳ app/models/finances_user.rb:9
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT `users`.`saving_id` FROM `users` WHERE `users`.`id` = 1[0m
+  ↳ app/services/year_service.rb:42
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT `savings`.`saving_in_year` FROM `savings` WHERE `savings`.`id` = 13[0m
+  ↳ app/services/year_service.rb:43
+  Rendering report/year_report.html.erb within layouts/application
+  Rendered shared/_table_intense_report.html.erb (2.0ms)
+  Rendered report/year_report.html.erb within layouts/application (14.8ms)
+  Rendered layouts/_shrim.html.erb (1.1ms)
+  Rendered layouts/_header.html.erb (4.5ms)
+  Rendered layouts/_footer.html.erb (1.2ms)
+Completed 200 OK in 290ms (Views: 247.0ms | ActiveRecord: 8.9ms)
+
+

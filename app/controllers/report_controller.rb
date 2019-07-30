@@ -20,5 +20,7 @@ class ReportController < ApplicationController
     @expense_amout = yearService.perform_amount_expense
     @savings = standardized(saving(@income_amout, @expense_amout))
     @saving = Saving.new
+
+    @saving_in_year = standardized yearService.saving_in_year
   end
 end
