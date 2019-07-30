@@ -4,9 +4,10 @@ class SavingsController < ApplicationController
   end
 
   def create
-    saving = Saving.find_by saving_in_year: saving_params[:saving_in_year]
+    number_format = format_number saving_params[:saving_in_year]
+    saving = Saving.find_by saving_in_year: number_format
     ActiveRecord::Base.transaction do
-      saving ||= Saving.create saving_params
+      saving ||= Saving.create saving_in_year: number_format
       return unless current_user.update! saving_id: saving.id
       flash[:success] = t "flash.success"
     end

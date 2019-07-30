@@ -3,7 +3,6 @@ Rails.application.routes.draw do
 
   get "savings/new"
   get "sessions/new"
-  get "users/new"
   get "/signup", to: "users#new"
   get "/login", to: "sessions#new"
   get "/month_report", to: "report#month_report"

@@ -4,7 +4,8 @@ class MonthIntensesController < ApplicationController
   def new; end
 
   def create
-    if current_user.update user_params
+    number_format = format_number user_params[:month_intense]
+    if current_user.update month_intense: number_format
       flash[:success] = t "flash.success"
     else
       flash[:danger] = t "flash.update_fail"

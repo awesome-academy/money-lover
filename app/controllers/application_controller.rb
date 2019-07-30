@@ -15,4 +15,8 @@ class ApplicationController < ActionController::Base
     flash[:danger] = t "flash.please_log"
     redirect_to login_url
   end
+
+  def format_number number
+    number.to_s.gsub(/,/,'').to_f
+  end
 end
