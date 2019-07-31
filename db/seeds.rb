@@ -110,7 +110,7 @@ def random_date_in_year(year)
   rand(Date.civil(year, 1, 1)..Date.civil(year, 12, 31))
 end
 
-50.times do |n|
+1000.times do |n|
   r = Random.new
   finance_id = r.rand(1...8)
   user_id = r.rand(1...8)

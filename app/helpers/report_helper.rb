@@ -12,4 +12,9 @@ module ReportHelper
   def standardized num
     num.round(0).to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
   end
+
+  def page_index params_page, index, per_page
+    params_page ||= Settings.page_index
+    (params_page.to_i - 1) * per_page.to_i + index.to_i + 1
+  end
 end

@@ -1,0 +1,55 @@
+<button type="button" class="btn btn-info btn-lg" id="old_month_report" data-toggle="modal" data-target="#old_month">
+  <%= t "year_report.title.old_month" %>
+</button>
+<div id="old_month" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="row">
+      <div class="col-md-12 month_intense">
+        <div class="panel panel-primary">
+          <div class="panel-heading text-center"><%= t "year_report.title.old_month" %> </div>
+          <div class="panel-body pad-35 clearfix">
+          <select class="browser-default custom-select" id="select-old-report">
+                <option selected><%= t "year_report.month.month" %></option>
+                <option value="1"><%= t "year_report.month.t1" %></option>
+                <option value="2"><%= t "year_report.month.t2" %></option>
+                <option value="3"><%= t "year_report.month.t3" %></option>
+                <option value="4"><%= t "year_report.month.t4" %></option>
+                <option value="5"><%= t "year_report.month.t5" %></option>
+                <option value="6"><%= t "year_report.month.t6" %></option>
+                <option value="7"><%= t "year_report.month.t7" %></option>
+                <option value="8"><%= t "year_report.month.t8" %></option>
+                <option value="9"><%= t "year_report.month.t9" %></option>
+                <option value="10"><%= t "year_report.month.t10" %></option>
+                <option value="11"><%= t "year_report.month.t11" %></option>
+                <option value="12"><%= t "year_report.month.t12" %></option>
+              </select>
+            <div class="panel panel-success">
+              <div class="panel-heading">
+                <h1 class="panel-title"><%= t "month_report.title.transaction"%></h1>
+              </div>
+              <div class="panel-body">
+                <table class="table">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th scope="col"><%= t "month_report.name_column.stt_col"%></th>
+                      <th scope="col"><%= t "month_report.name_column.category_col"%></th>
+                      <th scope="col"><%= t "month_report.name_column.name_col"%></th>
+                      <th scope="col"><%= t "month_report.name_column.income_col"%></th>
+                      <th scope="col"><%= t "month_report.name_column.amout_col"%></th>
+                    </tr>
+                  </thead>
+                  <tbody id="old_table_month_report">
+                    <%= render "shared/old_table_month_report" %>
+                  </tbody>
+                </table>
+                <div id="paginator">
+                  <%= paginate @transactions_old_month, :theme => 'twitter-bootstrap-3', remote: true %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
