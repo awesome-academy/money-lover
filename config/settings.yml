@@ -19,3 +19,5 @@ savings_per_page: 5
 zero: 0
 status_income: "1"
 status_expense: "0"
+input_stats: "stats_year"
+min_year: 1800

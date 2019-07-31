@@ -45,19 +45,18 @@ class Admin::CategoriesController < Admin::BaseAdminController
   end
 
   private
+    def category_params
+      params.require(:category).permit Category::CATEGORY_PARAMS
+    end
 
-  def category_params
-    params.require(:category).permit Category::CATEGORY_PARAMS
-  end
+    def get_category
+      @category = Category.find_by id: params[:id]
+      return if @category
+      flash[:error] = t("alert.not_found", obj: Category.name)
+      redirect_to admin_categories_path
+    end
 
-  def get_category
-    @category = Category.find_by id: params[:id]
-    return if @category
-    flash[:error] = t("alert.not_found", obj: Category.name)
-    redirect_to admin_categories_path
-  end
-
-  def get_category_select
-    @categories = Category.category_select params[:id]
-  end
+    def get_category_select
+      @categories = Category.category_select params[:id]
+    end
 end

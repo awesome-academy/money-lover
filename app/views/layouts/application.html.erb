@@ -14,7 +14,11 @@
 
   <body>
     <div id="wrap">
-      <%= render "layouts/header"%>
+      <% if current_user && admin? %>
+        <%= render "admin/shared/header"%>
+      <% else %>
+        <%= render "layouts/header"%>
+      <% end %>
       <div id="content">
         <div class="container">
           <div class="row">

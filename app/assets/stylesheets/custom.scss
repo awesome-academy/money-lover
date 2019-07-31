@@ -170,6 +170,7 @@ aside {
 
 #content {
   padding: 15px 0;
+  padding-top: 60px;
   min-height: calc(100vh - 50px);
 }
 
@@ -200,6 +201,10 @@ input, textarea, select, .uneditable-input {
   width: 100%;
   margin-bottom: 15px;
   @include box_sizing;
+}
+
+#category_parent_id {
+  margin-bottom: 25px;
 }
 
 input {
@@ -308,7 +313,7 @@ span.picture {
   margin-bottom: 20px;
 }
 
-.px-0 {
+.panel-body.px-0 {
   padding-left: 0;
   padding-right: 0;
 }
@@ -418,5 +423,10 @@ select {
 
 #chartContainer, #barChartContainer {
   height: 300px;
+  width: 100%;
+}
+
+#adStatMonthChart, #adStatYearChart {
+  height: 400px;
   width: 100%;
 }

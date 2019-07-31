@@ -1,0 +1,12 @@
+<div class="col-md-10 col-md-offset-1">
+  <div class="panel panel-primary mt-20">
+    <div class="panel-heading">
+      <%= t "admin.title.year_stats" %>
+    </div>
+    <div class="panel-body">
+      <div id="adStatYearChart"></div>
+    </div>
+  </div>
+</div>
+
+<%= javascript_tag "drawChart(#{@arrayDataPointsJSON});" %>

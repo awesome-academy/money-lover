@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   attr_accessor :remember_token, :reset_token
 
+  scope :by_created_year, ->(year){where("extract(year from created_at) = ?", year)}
+
   has_many :finances_users, dependent: :destroy
   has_many :finances, through: :finances_users
 

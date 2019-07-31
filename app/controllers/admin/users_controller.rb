@@ -40,15 +40,14 @@ class Admin::UsersController < Admin::BaseAdminController
   end
 
   private
+    def user_params
+      params.require(:user).permit User::USER_PARAMS
+    end
 
-  def user_params
-    params.require(:user).permit User::USER_PARAMS
-  end
-
-  def get_user
-    @user = User.find_by id: params[:id]
-    return if @user
-    flash[:danger] = t("alert.not_found", obj: User.name)
-    redirect_to admin_users_path
-  end
+    def get_user
+      @user = User.find_by id: params[:id]
+      return if @user
+      flash[:danger] = t("alert.not_found", obj: User.name)
+      redirect_to admin_users_path
+    end
 end

@@ -5,8 +5,12 @@ class SessionsController < ApplicationController
     user = User.find_by email: params[:session][:email].downcase
     if user&.authenticate(params[:session][:password])
       log_in user
-      remember user
-      redirect_to month_report_path
+      params[:session][:remember_me] == "1" ? remember(user) : forget(user)
+      if admin?
+        redirect_to admin_path
+      else
+        redirect_to month_report_path
+      end
     else
       flash.now[:danger] = t "flash.invalid_account"
       render :new

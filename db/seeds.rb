@@ -3,7 +3,7 @@
   Saving.create!( saving_in_year: saving )
 end
 
-9.times do |n|
+90.times do |n|
   r = Random.new
   name  = FFaker::Name.unique.name
   email = "example-#{n+1}@railstutorial.org"
@@ -23,6 +23,36 @@ end
     password: password,
     password_confirmation: password,
     saving_id: saving_id)
+end
+
+(1..10).each do |n|
+  user = User.find_by id: n
+  user.update created_at: Time.zone.now + 1.years
+end
+
+(11..25).each do |n|
+  user = User.find_by id: n
+  user.update created_at: Time.zone.now + 1.years + 1.months
+end
+
+(26..30).each do |n|
+  user = User.find_by id: n
+  user.update created_at: Time.zone.now + 1.years + 2.months
+end
+
+(31..40).each do |n|
+  user = User.find_by id: n
+  user.update created_at: Time.zone.now + 2.months
+end
+
+(41..60).each do |n|
+  user = User.find_by id: n
+  user.update created_at: Time.zone.now + 4.months
+end
+
+(61..90).each do |n|
+  user = User.find_by id: n
+  user.update created_at: Time.zone.now + 5.months
 end
 
 root_category = [

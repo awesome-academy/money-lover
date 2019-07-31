@@ -1,0 +1,15 @@
+<div class="col-md-6 col-md-offset-3">
+  <div class="panel panel-primary mt-20">
+    <div class="panel-heading">
+      <%= t "admin.title.month_stats" %>
+    </div>
+    <div class="panel-body">
+      <div class="alert alert-danger" role="alert">
+        <%= t("admin.alert.no_result", obj: @year) %>
+      </div>
+      <div class="text-right">
+        <%= link_to t("button.back"), admin_statistic_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>

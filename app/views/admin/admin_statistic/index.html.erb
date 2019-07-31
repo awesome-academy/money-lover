@@ -1,0 +1,9 @@
+<% if params[:year] %>
+  <% if @arrayDataPoints.present? %>
+    <%= render "stat_by_year" %>
+  <% else %>
+    <%= render "no_result_years" %>
+  <% end %>
+<% else %>
+  <%= render "form" %>
+<% end %>
