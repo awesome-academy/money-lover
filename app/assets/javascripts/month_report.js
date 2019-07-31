@@ -66,3 +66,18 @@ $( document ).on('turbolinks:load', function() {
   });
   chart.render();
 })
+
+$(document).ready(function(){
+  $("select#select-old-report").change(function(){
+      var selectedMonth = $(this).children("option:selected").val();
+
+      // var mydata = 'month=selectedMonth'
+        $.ajax({
+          type: 'get',
+          url: '/month_report',
+          data: {
+            mydata: selectedMonth
+          }
+          });
+  });
+});

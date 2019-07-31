@@ -153,6 +153,9 @@ en:
       name_col: "Name"
       income_col: "Income/Expense"
       amout_col: "Amout"
+      sum_income_col: "Income's Sum"
+      sum_expense_col: "Expense's Sum"
+      saving: "Savings"
     name_chart:
       income: "Income"
       expense: "Expense"
@@ -172,7 +175,8 @@ en:
       incomes_title: "Income"
       expense_title: "Expense"
       column_title: "Income and Expense in "
-      intents_title: "Intent Saving In Year"
+      intents: "Intent Saving In Year"
+      old_month: "Previous month report"
     table:
       name_column:
         stt_col: "#"
@@ -184,3 +188,17 @@ en:
         intense: "Intense"
     other:
       month: " months"
+    month:
+      month: "Month"
+      t1: "January"
+      t2: "February"
+      t3: "March"
+      t4: "April"
+      t5: "May"
+      t6: "June"
+      t7: "July"
+      t8: "August"
+      t9: "September"
+      t10: "October"
+      t11: "November"
+      t12: "December"

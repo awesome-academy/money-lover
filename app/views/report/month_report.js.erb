@@ -1,0 +1,2 @@
+$('#old_table_month_report').html('<%= j render("shared/old_table_month_report") %>');
+$('#paginator').html('<%= j paginate(@transactions_old_month, :theme => 'twitter-bootstrap-3', remote: true) %>');

@@ -10,6 +10,6 @@
     <% else %>
     <td><%= t "month_report.name_chart.expense"%></td>
     <% end %>
-    <td><%= transaction.amout.to_i %></td>
+    <td><%= standardized(transaction.amout.to_i) %></td>
   </tr>
   <% end %>
