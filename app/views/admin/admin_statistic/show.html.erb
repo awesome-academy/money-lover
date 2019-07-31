@@ -1,0 +1,6 @@
+<% if @arrayDataPoint.present? %>
+  <%= render "stat_by_month" %>
+<% else %>
+  <%= render "no_result" %>
+<% end %>
+<%= javascript_tag "drawChartMonth(#{@year}, #{@arrayDataPointJSON});" %>

@@ -6,6 +6,33 @@ en:
     create_savings: "Create Savings"
     create: 'Create %{obj}'
     edit: 'Edit %{obj}'
+  admin:
+    title:
+      year_stats: "Statistic User Register by Year"
+      year_stats_2: "Statistic Users Register by months in "
+      month_stats: "Statistic User Register by Month"
+    stats_by_year:
+      _x: "Month"
+      _y: "Users"
+    months:
+      _1: "Jan"
+      _2: "Feb"
+      _3: "Mar"
+      _4: "Apr"
+      _5: "May"
+      _6: "Jun"
+      _7: "Jul"
+      _8: "Aug"
+      _9: "Sep"
+      _10: "Oct"
+      _11: "Nov"
+      _12: "Dec"
+    label:
+      enter_year: "Enter year: "
+    alert:
+      no_result: 'No data in %{obj} to statistic'
+      no_data: "No data to statistic"
+
   sessions:
     login: "Log in"
     forgot_password: "Forgot password"
@@ -24,6 +51,8 @@ en:
     update: "Update"
     delete: "Delete"
     back: "Back"
+    back_to_home: "Back to home"
+    submit: "Show statistic"
   users:
     create_my_account: "Create my account"
     profile: "Profile"
@@ -61,6 +90,10 @@ en:
     profile: "Profile"
     account: "Account"
     logout: "Logout"
+    stat_users: "Statistic Users"
+    stat_user_by_month: "Statistic Users By Month"
+    stat_user_by_year: "Statistic Users By Year"
+
   table:
     title:
       users: "User Table"

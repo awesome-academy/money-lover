@@ -1,0 +1,14 @@
+<div class="col-md-4 col-md-offset-4">
+  <div class="panel panel-primary mt-20">
+    <div class="panel-heading">
+      <%= t "admin.title.month_stats" %>
+    </div>
+    <div class="panel-body">
+      <%= form_tag admin_statistic_show_path, method: :get do |f| %>
+        <%= label_tag t("admin.label.enter_year") %>
+        <%= number_field_tag Settings.input_stats, nil, class: "form-control", min: Settings.min_year %>
+        <%= submit_tag t("button.submit"), class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>

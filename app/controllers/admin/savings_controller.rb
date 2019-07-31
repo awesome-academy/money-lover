@@ -40,15 +40,14 @@ class Admin::SavingsController < Admin::BaseAdminController
   end
 
   private
+    def saving_params
+      params.require(:saving).permit Saving::SAVING_PARAMS
+    end
 
-  def saving_params
-    params.require(:saving).permit Saving::SAVING_PARAMS
-  end
-
-  def get_saving
-    @saving = Saving.find_by id: params[:id]
-    return if @saving
-    flash[:danger] = t("alert.not_found", obj: Saving.name)
-    redirect_to admin_savings_path
-  end
+    def get_saving
+      @saving = Saving.find_by id: params[:id]
+      return if @saving
+      flash[:danger] = t("alert.not_found", obj: Saving.name)
+      redirect_to admin_savings_path
+    end
 end

@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   resources :savings, only: %i(new create)
 
   namespace :admin do
+    get "/statistic", to: "admin_statistic#index"
+    get "/statistic/show", to: "admin_statistic#show"
+
     resources :users
     resources :savings
     resources :categories
