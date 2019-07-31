@@ -11,10 +11,10 @@ class SavingsController < ApplicationController
       return unless current_user.update! saving_id: saving.id
       flash[:success] = t "flash.success"
     end
-    redirect_to month_report_path
+    redirect_to year_report_path
   rescue
     flash[:danger] = t("flash.update_fail")
-    redirect_to month_report_path
+    redirect_to year_report_path
   end
 
   private

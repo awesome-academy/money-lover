@@ -1,0 +1,23 @@
+<div class="panel panel-success">
+  <div class="panel-heading">
+    <h1 class="panel-title"><%= t "year_report.title.intents_title" %></h1>
+  </div>
+  <div class="panel-body">
+  <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col"><%= t "year_report.table.name_column.intense" %></th>
+          <th scope="col"><%= t "year_report.table.name_column.amount" %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <td>
+          <%= t "year_report.table.name_column.saved" %>
+        </td>
+        <td>
+          <%= @saving_in_year %>
+        </td>
+      </tbody>
+    </table>
+  </div>
+</div>

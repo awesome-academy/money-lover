@@ -19,6 +19,10 @@ class YearService
     cal_percent Settings.status_expense
   end
 
+  def saving_in_year
+    saving_year
+  end
+
   private
   def cal_amount status
     @amount = FinancesUser.sum_each_month @user_id, status
@@ -29,5 +33,15 @@ class YearService
     @percent = FinancesUser.select(:amout).where("(date between DATE_FORMAT(NOW(),'%Y-01-01')
     AND NOW())").where(user_id: @user_id).where(status: status)
     @percent.to_json
+  end
+
+  def convert_arr_to_fixnum num
+    num.inject{|n, d| n * 10 + d}
+  end
+
+  def saving_year
+    saving_id = User.by_user_id(@user_id).pluck :saving_id
+    saving_in_year = Saving.by_saving_id(convert_arr_to_fixnum(saving_id)).pluck :saving_in_year
+    convert_arr_to_fixnum saving_in_year
   end
 end
