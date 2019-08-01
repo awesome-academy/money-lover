@@ -36,7 +36,7 @@ en:
   sessions:
     login: "Log in"
     forgot_password: "Forgot password"
-    remember_me: "remember me"
+    remember_me: "Remember me"
     new_account: "New account?"
     logout: "Logout"
   button:
@@ -84,6 +84,7 @@ en:
     logo:
       _1: "Money"
       _2: "Lover"
+    welcome: "Welcome, "
   menu:
     manage_db: "Manage Database"
     statistic: "Statistic"

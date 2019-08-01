@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top navbar-admin">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -18,22 +18,11 @@
       <ul class="nav navbar-nav navbar-right">
         <% if logged_in? %>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= t "menu.statistic_users" %><span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><%= link_to t("menu.stat_user_by_month"), admin_statistic_url %></li>
-              <li><%= link_to t("menu.stat_user_by_year"), admin_statistic_url(year: true) %></li>
-            </ul>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= t "menu.manage_db" %><span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><%= link_to User.name, admin_users_path %></li>
-              <li><%= link_to Category.name, admin_categories_path %></li>
-              <li><%= link_to Saving.name, admin_savings_path %></li>
-            </ul>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= t "menu.account" %><span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              <span><%= t "header.welcome" %></span>
+              <%= current_user.username %>
+              <span class="caret"></span>
+            </a>
             <ul class="dropdown-menu">
               <li><%= link_to t("users.profile"), current_user %></li>
               <li><%= link_to t("users.setting"), edit_user_path(current_user) %></li>

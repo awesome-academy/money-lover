@@ -141,30 +141,86 @@ footer {
 }
 
 /* sidebar */
+.wrap-admin {
+  padding-left: 250px;
+}
 
-aside {
-  section.user_info {
-    margin-top: 20px;
+.content-admin {
+  padding-top: 60px;
+}
+
+@media (min-width: 1200px) {
+  .wrap-admin .container {
+    max-width: 1170px;
+    width: auto;
   }
-  section {
-    padding: 10px 0;
-    margin-top: 20px;
-    &:first-child {
-      border: 0;
-      padding-top: 0;
+}
+.navbar.navbar-admin {
+  background-color: $bl_header_admin;
+  color: $white;
+}
+
+.navbar-admin {
+
+  &.navbar-default .logo {
+    margin-left: 25px!important;
+    color: yellow;
+    &:hover {
+      span {
+        color: yellow;
+        opacity: 1;
+      }
+    }
+  }
+
+  &.navbar-default .navbar-nav > li > a {
+    color: $white;
+    &:hover {
+      color: $bl_3;
+    }
+  }
+}
+
+.sidebar {
+  width: 250px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background: $white;
+  overflow-y: auto;
+  height: 100vh;
+  border-right: 1px solid $border_sidebar;
+  &-menu {
+    margin-top: 70px;
+    border-top: 1px solid $gray_admin_menu;
+    border-bottom: 1px solid $gray_admin_menu;
+    li a, span {
+      font-size: 14px;
+      color: $bl_5;
+      display: block;
+      padding: 13px 25px;
+      border-bottom: 1px solid $gray_admin_menu;
+      &:hover {
+        text-decoration: none;
+        background: $bl_header_admin;
+        color: $white;
+      }
     }
     span {
-      display: block;
-      margin-bottom: 3px;
-      line-height: 1;
+      font-weight: 800;
+      text-transform: capitalize;
+      padding-left: 25px;
+      background: $bg_e5;
+      &:hover {
+        color: $bl_5;
+        background: $bg_e5;
+      }
     }
-    h1 {
-      font-size: 1.4em;
-      text-align: left;
-      letter-spacing: -1px;
-      margin-bottom: 3px;
-      margin-top: 0px;
-    }
+  }
+  .child-list {
+    margin-left: 25px;
+    border-left: 1px solid $gray_admin_menu;
   }
 }
 
@@ -295,7 +351,7 @@ span.picture {
   margin-top: 20px;
 }
 
-.table > tbody > tr > td {
+.wrap-admin .table > tbody > tr > td {
   vertical-align: middle;
 }
 
