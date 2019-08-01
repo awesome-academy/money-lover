@@ -11,9 +11,10 @@
   </head>
 
   <body>
-    <div id="wrap">
+    <div class="wrap-admin">
       <%= render "admin/shared/header"%>
-      <div id="content">
+      <%= render "admin/shared/sidebar" %>
+      <div class="content-admin">
         <div class="container">
           <div class="row">
             <div class="col-md-12">
@@ -27,7 +28,6 @@
           </div>
         </div>
       </div>
-      <%= render "layouts/footer" %>
     </div>
   </body>
 </html>
