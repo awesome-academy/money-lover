@@ -157,12 +157,16 @@ en:
       sum_income_col: "Income's Sum"
       sum_expense_col: "Expense's Sum"
       saving: "Savings"
+      date_col: "Date"
     name_chart:
       income: "Income"
       expense: "Expense"
     other:
+      search: "Search for names.."
       toggle: "Toggle navigation"
       footer: "RubyTeam 2019 "
+      not_found: "Not found data!"
+      select_date: "Please Select the Date"
     account: "Account"
   home: "Home"
   saving:

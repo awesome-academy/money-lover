@@ -9,13 +9,17 @@ $( document ).on('turbolinks:load', function() {
   });
 
   $(function () {
+    $('#datetimepicker1').datetimepicker({
+      format: 'LL'
+    });
+    $('#datetimepicker2').datetimepicker({
+      format: 'LL'
+    });
     $('#datetimepicker3').datetimepicker({
-        format: 'LL'
+      format: 'LL'
     });
   });
 
-  console.log(gon.hash_gon);
-  console.log(typeof(gon.hash_gon));
   //Bar Chart
   var barChart = new CanvasJS.Chart('barChartContainer', {
     animationEnabled: true,
@@ -65,19 +69,44 @@ $( document ).on('turbolinks:load', function() {
     }]
   });
   chart.render();
-})
 
-$(document).ready(function(){
+
   $("select#select-old-report").change(function(){
-      var selectedMonth = $(this).children("option:selected").val();
+    var selectedMonth = $(this).children("option:selected").val();
 
-      // var mydata = 'month=selectedMonth'
-        $.ajax({
-          type: 'get',
-          url: '/month_report',
-          data: {
-            mydata: selectedMonth
-          }
-          });
+    $.ajax({
+      type: 'get',
+      url: '/month_report',
+      data: {
+        mydata: selectedMonth,
+        this_month_page: $('#old_month_report-btn').attr('data-this-month'),
+        from_date: $('#old_month_report-btn').attr('data-from-date')
+      }
+      }).fail(function() {
+        alert( I18n.t('month_report.other.not_found'));
+      });
   });
-});
+
+  $('#search_time_picker').click(function(){
+    var from_date = $('#datetimepicker1').data('date');
+    var to_date = $('#datetimepicker2').data('date');
+
+    if(from_date != '' && to_date != '')
+    {
+      $.ajax({
+        url:"/month_report",
+        method:"GET",
+        data: {
+          from_date: from_date,
+          to_date: to_date
+        }
+      }).fail(function() {
+        alert(I18n.t('month_report.other.not_found'));
+      });
+    }
+    else
+    {
+      alert(I18n.t('month_report.other.select_date'));
+    }
+  });
+})

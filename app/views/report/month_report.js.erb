@@ -1,2 +1,5 @@
 $('#old_table_month_report').html('<%= j render("shared/old_table_month_report") %>');
-$('#paginator').html('<%= j paginate(@transactions_old_month, :theme => 'twitter-bootstrap-3', remote: true) %>');
+$('#paginator').html('<%= j paginate @transactions_old_month, param_name: "old_month_page", theme: 'twitter-bootstrap-3', remote: true %>');
+$('#old_month_report-btn').attr('data-this-month', <%= @this_month_page %>)
+$('#table_this_month').html('<%= j render("shared/table_month_report") %>');
+$('#paginator_this_month').html('<%= j paginate @transactions, param_name: "this_month_page", theme: 'twitter-bootstrap-3', remote: true %>');

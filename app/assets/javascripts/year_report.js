@@ -1,3 +1,6 @@
+var income;
+var expense;
+
 function amount(item){
   return item.amout;
 }

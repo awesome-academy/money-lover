@@ -19,6 +19,28 @@ end
     address: address,
     avatar: avatar,
     username: username,
+    admin: false,
+    password: password,
+    password_confirmation: password,
+    saving_id: saving_id)
+end
+
+1.times do |n|
+  r = Random.new
+  name  = FFaker::Name.unique.name
+  email = "admin@railstutorial.org"
+  phone = 10000000000 + r.rand(1...9999999)
+  address = FFaker::Address.street_address
+  avatar = "links"
+  username = FFaker::InternetSE.user_name_random
+  password = "password"
+  saving_id = r.rand(1...9)
+  User.create!(name: name,
+    email: email,
+    phone: phone,
+    address: address,
+    avatar: avatar,
+    username: username,
     admin: true,
     password: password,
     password_confirmation: password,
@@ -110,7 +132,7 @@ def random_date_in_year(year)
   rand(Date.civil(year, 1, 1)..Date.civil(year, 12, 31))
 end
 
-1000.times do |n|
+5000.times do |n|
   r = Random.new
   finance_id = r.rand(1...8)
   user_id = r.rand(1...8)
