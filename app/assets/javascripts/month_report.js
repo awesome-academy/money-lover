@@ -21,7 +21,7 @@ $( document ).on('turbolinks:load', function() {
   });
 
   //Bar Chart
-  var barChart = new CanvasJS.Chart('barChartContainer', {
+  var barChart = new CanvasJS.Chart('barChartContainer_month', {
     animationEnabled: true,
     exportEnabled: true,
     theme: 'light1', // 'light1', 'light2', 'dark1', 'dark2'
@@ -47,7 +47,7 @@ $( document ).on('turbolinks:load', function() {
   var percentExpense = 100 - percentIncome
   var percentIncomeString = percentIncome.toFixed(2)
   var percentExpenseString = percentExpense.toFixed(2)
-  var chart = new CanvasJS.Chart('chartContainer', {
+  var chart = new CanvasJS.Chart('chartContainer_month', {
     theme: 'light2', // 'light1', 'light2', 'dark1', 'dark2'
     exportEnabled: true,
     animationEnabled: true,
