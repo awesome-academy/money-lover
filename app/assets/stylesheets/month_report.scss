@@ -79,3 +79,24 @@ table.dataTable tbody {
 #old_month_report {
   margin-top: 2%;
 }
+
+.saving-color {
+  background-color: $yellow_F5F528;
+}
+
+.danger-color {
+  background-color: $state-danger-text;
+}
+
+.success-color {
+  background-color: $green_189E16;
+}
+
+.text_white {
+  color: $bg_e5;
+}
+
+tr.year-report:nth-child(2n+1) {
+  background-color: $dark-gray_2e2e2e;
+  color: $white;
+}

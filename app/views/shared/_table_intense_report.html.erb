@@ -1,23 +1,53 @@
-<div class="panel panel-success">
+<div class="panel panel-primary">
   <div class="panel-heading">
     <h1 class="panel-title"><%= t "year_report.title.intents_title" %></h1>
   </div>
   <div class="panel-body">
-  <table class="table">
+    <table class="table">
       <thead class="thead-dark">
         <tr>
-          <th scope="col"><%= t "year_report.table.name_column.intense" %></th>
-          <th scope="col"><%= t "year_report.table.name_column.amount" %></th>
+          <td>
+            <%= t "year_report.table.name_column.saved" %>
+          </td>
+          <td>
+            <%= @saving_in_year %>
+          </td>
         </tr>
       </thead>
       <tbody>
+      <tr class="success-color text_white">
         <td>
-          <%= t "year_report.table.name_column.saved" %>
+          <%= t "year_report.table.saved" %>
         </td>
         <td>
-          <%= @saving_in_year %>
+          <%= @savings %>
         </td>
+      </tr>
       </tbody>
     </table>
+    <button type="button" class="btn btn-info btn-sm btn-year-saving" id="saving-btn" data-toggle="modal" data-target="#myModal2">
+      <%= t "saving.year_saving" %>
+    </button>
+    <div id="myModal2" class="modal fade" role="dialog">
+      <div class="modal-dialog clearfix">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2 month_intense">
+            <div class="panel panel-primary">
+              <div class="panel-heading text-center"><%= t "saving.year_saving" %> </div>
+              <div class="panel-body pad-35 clearfix" >
+                <%= form_for @saving, url: savings_path do |f| %>
+                  <div class="mb-15">
+                    <%= f.text_field :saving_in_year, class: "form_control field_month_intense f_number1"%>
+                  </div>
+                  <div class="text-right">
+                    <%= f.submit t("button.save_month_intense"), class: "btn btn-primary btn-sm btn-save-report" %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

@@ -23,6 +23,10 @@ class YearService
     saving_year
   end
 
+  def sum_transaction arr
+    sum_transaction_private arr
+  end
+
   private
   def cal_amount status
     @amount = FinancesUser.sum_each_month @user_id, status
@@ -43,5 +47,9 @@ class YearService
     saving_id = User.by_user_id(@user_id).pluck :saving_id
     saving_in_year = Saving.by_saving_id(convert_arr_to_fixnum(saving_id)).pluck :saving_in_year
     convert_arr_to_fixnum saving_in_year
+  end
+
+  def sum_transaction_private array
+    array.map{|e| e[0]}.reduce(:+)
   end
 end
