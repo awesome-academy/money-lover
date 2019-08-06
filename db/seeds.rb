@@ -140,14 +140,3 @@ end
     date: random_date_in_year(2019)
   )
 end
-
-
-50.times do |n|
-  r = Random.new
-  category_id = r.rand(15...19)
-  user_id = r.rand(1...8)
-  CategoriesUser.create!(
-    category_id: category_id,
-    user_id: user_id,
-  )
-end

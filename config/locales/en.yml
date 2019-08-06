@@ -79,7 +79,6 @@ en:
     success: "Successful"
     update_success: "Update Successful"
     update_fail: "Please rewrite"
-    update_fail1: "Please rewrite1"
   mail:
     password_reset: "password reset"
     head: "To reset your password click the link below:"
@@ -91,6 +90,9 @@ en:
       _1: "Money"
       _2: "Lover"
     welcome: "Welcome, "
+    languge: "Language"
+    english: "English"
+    vietnam: "Vietnamese"
   menu:
     manage_db: "Manage Database"
     statistic: "Statistic"
@@ -149,6 +151,7 @@ en:
       chart: "Chart"
       report: "Report"
       plans: "Spending Plan"
+      category_user: "Category by user"
     link_page:
       move_chart: "*Move to Chart"
       move_report: "*Move to Report"
@@ -215,7 +218,7 @@ en:
     other:
       need_save: "From next month, you need saved"
       per_month: "/month"
-      vnd: "VND"
+      vnd: "$"
       month: " months"
     month:
       month: "Month"

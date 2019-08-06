@@ -1,0 +1,10 @@
+<% if @status == :success %>
+  $('.btn-delete').bind('ajax:success', function() {
+    $(this).parents('div.category-item').fadeOut();
+    $('#noti').addClass('alert-success');
+    $('#noti').html('<%= j t("alert.deleted", obj: Category.name) %>');
+  });
+<% else %>
+  $('#noti').addClass('alert-error');
+  $('#noti').html('<%= j t("alert.delete_failed", obj: Category.name) %>');
+<% end %>

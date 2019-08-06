@@ -16,6 +16,13 @@ class FinancesUser < ApplicationRecord
   scope :pluck_column, -> {pluck(Arel.sql("sum(amout) as sum_amount, monthname(date) as month_name, status"))}
   scope :order_by_updated_date, ->{order(updated_at: :desc)}
   scope :by_date, ->(from_date, to_date){where date: from_date..to_date}
+
+  scope :last_month, -> (){where date: 1.month.ago.beginning_of_month..1.month.ago.end_of_month}
+  scope :permanent, -> (){where staticExpense: true}
+
+  scope :permanent_last_month, ->() do
+    last_month.permanent
+  end
   scope :sum_each_month, ->(user_id, status) do
     select_column.by_user_id(user_id).by_status(status).by_this_year.group(:month_name).pluck_column
   end
