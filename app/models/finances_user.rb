@@ -9,6 +9,8 @@ class FinancesUser < ApplicationRecord
   scope :by_month, ->(month){where('extract(month from date) = ?', month)}
   scope :select_column, -> {select(Arel.sql("sum(amout) as sum_amount, monthname(date) as month_name, status"))}
   scope :pluck_column, -> {pluck(Arel.sql("sum(amout) as sum_amount, monthname(date) as month_name, status"))}
+  scope :order_by_updated_date, ->{order(:updated_at)}
+  scope :by_date, ->(from_date, to_date){where date: from_date..to_date}
   scope :sum_each_month, ->(user_id, status) do
     select_column.by_user_id(user_id).by_status(status).by_this_year.group(:month_name).pluck_column
   end
@@ -20,5 +22,11 @@ class FinancesUser < ApplicationRecord
   end
   scope :sum_transaction_month, ->(user_id, status, month) do
     by_user_id(user_id).by_this_year.by_status(status).by_month(month).sum(:amout)
+  end
+  scope :sum_this_month, ->(user_id, status) do
+    by_user_id(user_id).by_this_year.by_this_month.by_status(status).sum(:amout)
+  end
+  scope :find_from_date_to_date, ->(from_date, to_date, user_id) do
+    by_user_id(user_id).by_this_year.by_date(from_date, to_date)
   end
 end

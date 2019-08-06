@@ -99,4 +99,14 @@ table.dataTable tbody {
 tr.year-report:nth-child(2n+1) {
   background-color: $dark-gray_2e2e2e;
   color: $white;
+
+}
+
+.flex-container {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+#old_month_report-btn {
+  margin-top: 10px;
 }

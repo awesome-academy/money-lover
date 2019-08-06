@@ -1,4 +1,4 @@
-<button type="button" class="btn btn-info btn-lg" id="old_month_report" data-toggle="modal" data-target="#old_month">
+<button type="button" class="btn btn-info btn-lg col-md-8" id="old_month_report-btn" data-this-month="<%= @this_month_page %>" data-from-date="<%= @from_date %>" data-toggle="modal" data-target="#old_month">
   <%= t "year_report.title.old_month" %>
 </button>
 <div id="old_month" class="modal fade" role="dialog">
@@ -43,7 +43,7 @@
                   </tbody>
                 </table>
                 <div id="paginator">
-                  <%= paginate @transactions_old_month, :theme => 'twitter-bootstrap-3', remote: true %>
+                  <%= paginate @transactions_old_month, :param_name => "old_month_page", :theme => 'twitter-bootstrap-3', remote: true %>
                 </div>
               </div>
             </div>

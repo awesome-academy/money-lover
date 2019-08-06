@@ -3,12 +3,15 @@ class ReportController < ApplicationController
 
   def month_report
     monthService = MonthService.new current_user.id
-    @transactions = monthService.transaction_this_month
-    @transactions_old_month = monthService.transaction_old_month(params['mydata']).page(params[:page]).per(Settings.old_month_per_page)
+    @transactions = monthService.select_transaction(params["from_date"], params["to_date"], params[:this_month_page])
+    @transactions_old_month = monthService.transaction_old_month(params["mydata"]).page(params[:old_month_page]).per(Settings.old_month_per_page)
     income_transactions = @transactions.by_status(true)
     expense_transactions = @transactions - income_transactions
-    @income_sum = monthService.sum_income(params['mydata'])
-    @expense_sum = monthService.sum_expense(params['mydata'])
+    @income_sum = monthService.sum_income(params["mydata"])
+    @expense_sum = monthService.sum_expense(params["mydata"])
+    @sum_this_month_income = monthService.sum_this_month_income
+    @sum_this_month_expense = monthService.sum_this_month_expense
+    @this_month_page = params[:this_month_page] ? params[:this_month_page] : "1"
     gon.hash_gon = {income_amout: income_transactions.pluck(:amout).sum,
     expense_amout: expense_transactions.pluck(:amout).sum}
 
