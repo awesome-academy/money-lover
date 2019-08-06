@@ -19,7 +19,7 @@
   </tr>
   <% end %>
   <hr>
-  <tr class="saving-color  text_white">
+  <tr class="">
     <th><%= t "month_report.name_column.stt_col"%></th>
     <td class = "font-weight-bold"><b><%= t "month_report.name_column.sum_income_col" %></b></td>
     <td></td>
@@ -27,7 +27,7 @@
     <td></td>
     <td><i><b><%= standardized(@sum_this_month_income) %></i></b></td>
   </tr>
-  <tr class="dark-color  text_white">
+  <tr>
     <th><%= t "month_report.name_column.stt_col"%></th>
     <td class = "font-weight-bold"><b><%= t "month_report.name_column.sum_expense_col" %></b></td>
     <td></td>
@@ -35,7 +35,7 @@
     <td></td>
     <td><i><b><%= standardized(@sum_this_month_expense) %></b></i></td>
   </tr>
-  <tr class="saving-color text_white">
+  <tr class="saving-color">
     <th><%= t "month_report.name_column.stt_col"%></th>
     <td class = "font-weight-bold"><b><%= t "month_report.name_column.saving" %></b></td>
     <td></td>

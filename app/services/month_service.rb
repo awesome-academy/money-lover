@@ -18,9 +18,9 @@ class MonthService
 
   def select_transaction from_date, to_date, this_month_page
     unless from_date.present?
-      transaction_this_month.page(this_month_page).per(Settings.this_month_per_page)
+      transaction_this_month.page(this_month_page).per Settings.this_month_per_page
     else
-      transaction_in_time_select(from_date, to_date).page(this_month_page).per(Settings.this_month_per_page)
+      transaction_in_time_select(from_date, to_date).page(this_month_page).per Settings.this_month_per_page
     end
   end
 
@@ -42,22 +42,22 @@ class MonthService
 
   private
   def transaction_this_month_private
-    FinancesUser.includes(:finance).find_transaction_in_month(@user_id).order_by_updated_date
+    FinancesUser.includes(:finance).find_transaction_in_month @user_id
   end
 
   def transaction_old_month_private month
-    FinancesUser.includes(:finance).find_transaction_by_month(@user_id, month)
+    FinancesUser.includes(:finance).find_transaction_by_month @user_id, month
   end
 
   def transaction_in_time_select_private from_date, to_date
-    FinancesUser.includes(:finance).find_from_date_to_date(from_date, to_date, @user_id)
+    FinancesUser.includes(:finance).find_from_date_to_date from_date, to_date, @user_id
   end
 
   def sum_private status, month
-    FinancesUser.sum_transaction_month(@user_id, status, month)
+    FinancesUser.sum_transaction_month @user_id, status, month
   end
 
   def sum_this_month_private status
-    FinancesUser.sum_this_month(@user_id, status)
+    FinancesUser.sum_this_month @user_id, status
   end
 end

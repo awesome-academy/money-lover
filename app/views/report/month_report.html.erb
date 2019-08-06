@@ -1,43 +1,74 @@
 <% provide :title, t("month_report.title.month_report") %>
 
 <div class="container">
-  <div class="row link_page">
-    <%= link_to t("month_report.link_page.move_chart"), "#chartContainer" %>
-  </div>
-  <div class="row" id="report">
-    <div class="col-md-8">
-      <div class="panel panel-success">
-        <div class="panel-heading">
-          <h1 class="panel-title"><%= t "month_report.title.transaction"%></h1>
+  <ul class="nav nav-tabs" role="tablist">
+    <li class="active">
+        <a href="#report" role="tab" data-toggle="tab">
+            <icon class="fa fa-home"></icon> Report
+        </a>
+    </li>
+    <li><a href="#chart" role="tab" data-toggle="tab">
+        <i class="fa fa-user"></i> Chart
+        </a>
+    </li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane fade active in" id="report">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="panel panel-success">
+            <div class="panel-heading">
+              <h1 class="panel-title"><%= t "month_report.title.transaction"%></h1>
+            </div>
+            <div class="panel-body">
+              <div class="flex-container">
+                <div class="col-md-3 input-group date" data-provide="datepicker1" id="datetimepicker1">
+                  <input type="text" class="form-control">
+                  <div class="input-group-addon">
+                      <span class="glyphicon glyphicon-th"></span>
+                  </div>
+                </div>
+                <div class="input-group date col-md-3" id="datetimepicker2">
+                  <input type="text" class="form-control">
+                  <div class="input-group-addon">
+                      <span class="glyphicon glyphicon-th"></span>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <input type="button" name="range" id="search_time_picker" value="Search" class="btn btn-success form-control"/>
+                </div>
+              </div>
+              <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col"><%= t "month_report.name_column.stt_col"%></th>
+                    <th scope="col"><%= t "month_report.name_column.category_col"%></th>
+                    <th scope="col"><%= t "month_report.name_column.name_col"%></th>
+                    <th scope="col"><%= t "month_report.name_column.income_col"%></th>
+                    <th scope="col"><%= t "month_report.name_column.date_col"%></th>
+                    <th scope="col"><%= t "month_report.name_column.amout_col"%></th>
+                  </tr>
+                </thead>
+                <tbody id="table_this_month">
+                  <%= render "shared/table_month_report" %>
+                </tbody>
+              </table>
+              <div id="paginator_this_month">
+                <%= paginate @transactions, param_name:  "this_month_page", theme: "twitter-bootstrap-3", remote: true %>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="panel-body">
-          <table class="table">
-            <thead class="thead-dark">
-              <tr>
-                <th scope="col"><%= t "month_report.name_column.stt_col"%></th>
-                <th scope="col"><%= t "month_report.name_column.category_col"%></th>
-                <th scope="col"><%= t "month_report.name_column.name_col"%></th>
-                <th scope="col"><%= t "month_report.name_column.income_col"%></th>
-                <th scope="col"><%= t "month_report.name_column.amout_col"%></th>
-              </tr>
-            </thead>
-            <tbody>
-              <%= render "shared/table_month_report" %>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="panel panel-success">
-        <div class="panel-heading">
-          <h1 class="panel-title"><%= t "month_report.title.add_transaction"%></h1>
-        </div>
-        <div class="panel-body">
-          <%= form_for :transaction, url: finances_user_path do |f|  %>
-            <div class="form-group">
-              <label for="exampleInputEmail1"><%= t "month_report.title.amout"%></label>
-              <%= f.text_field :amout, class: "form-control f_number2", id: "exampleInputEmail1"%>
+        <div class="col-md-4">
+          <div class="panel panel-success">
+            <div class="panel-heading">
+              <h1 class="panel-title"><%= t "month_report.title.add_transaction"%></h1>
+            </div>
+            <div class="panel-body">
+              <%= form_for :transaction, url: finances_user_path do |f|  %>
+                <div class="form-group">
+                  <label for="exampleInputEmail1"><%= t "month_report.title.amout"%></label>
+                  <%= f.text_field :amout, class: "form-control f_number2", id: "exampleInputEmail1"%>
             </div>
             <div class="form-group">
               <label for="exampleInputEmail1"><%= t "month_report.title.time"%></label>
@@ -69,7 +100,7 @@
               <div><%= f.radio_button :status, "0", class: "col-md-6" %><%= t "month_report.transaction.expense"%></div>
             </div>
             <div class="form-group">
-              <label for="exampleFormControlTextarea1"><%= t "month_report.transaction.permanent"%></label> 
+              <label for="exampleFormControlTextarea1"><%= t "month_report.transaction.permanent"%></label>
               <div><%= t "month_report.transaction.permanent"%><%= f.check_box :staticExpense, class: "col-md-6" %></div>
               <%= f.hidden_field :staticExpense, value: "0" %>
             </div>
@@ -108,10 +139,10 @@
     <div class="tab-pane fade" id="chart">
       <div class="row" >
         <div class="col-md-6">
-          <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+          <div id="chartContainer_month" style="height: 300px; width: 100%;"></div>
         </div>
         <div class="col-md-6">
-          <div id="barChartContainer" style="height: 300px; width: 100%;"></div>
+          <div id="barChartContainer_month" style="height: 300px; width: 100%;"></div>
         </div>
       </div>
     </div>
