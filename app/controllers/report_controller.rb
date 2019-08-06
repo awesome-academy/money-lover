@@ -25,6 +25,8 @@ class ReportController < ApplicationController
     @expense = yearService.perform_percent_expense
     @income_amout = yearService.perform_amount_income
     @expense_amout = yearService.perform_amount_expense
+    @expense_sum = yearService.sum_transaction(@expense_amout)
+    @income_sum = yearService.sum_transaction(@income_amout)
     @savings = standardized(saving(@income_amout, @expense_amout))
     @saving = Saving.new
 

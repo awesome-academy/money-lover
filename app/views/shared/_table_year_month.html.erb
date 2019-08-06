@@ -1,0 +1,44 @@
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col"><%= t "year_report.table.name_column.month"%></th>
+      <th scope="col"><%= t "year_report.table.name_column.income"%></th>
+      <th scope="col"><%= t "year_report.table.name_column.expense"%></th>
+      <th scope="col"><%= t "year_report.table.name_column.saving"%></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%
+    @income_amout.each_with_index do |income_amout, index|
+      @expense_amout.each_with_index do |expense_amout, index|
+        if income_amout[1].eql? expense_amout[1]
+    %>
+        <tr class="year-report">
+        <td><%= @income_amout[index][1]%> </td>
+        <td><%= standardized(income_amout[0])%></td>
+        <td><%= standardized(expense_amout[0])%></td>
+        <td><%= standardized(income_amout[0] - expense_amout[0])%></td>
+      </tr>
+    <%  end
+      end
+    end%>
+    <tr class="success-color text_white">
+      <td class = "font-weight-bold"><b><%= t "month_report.name_column.sum_income_col" %></b></td>
+      <td></td>
+      <td></td>
+      <td><i><b><%= standardized(@income_sum) %></i></b></td>
+    </tr>
+    <tr class="danger-color text_white">
+      <td class = "font-weight-bold"><b><%= t "month_report.name_column.sum_expense_col" %></b></td>
+      <td></td>
+      <td></td>
+      <td><i><b><%= standardized(@expense_sum) %></b></i></td>
+    </tr>
+    <tr class="saving-color text_white">
+      <td class = "font-weight-bold"><b><%= t "month_report.name_column.saving" %></b></td>
+      <td></td>
+      <td></td>
+      <td><i><b><%= standardized(@income_sum - @expense_sum) %></b></i></td>
+    </tr>
+  </tbody>
+</table>

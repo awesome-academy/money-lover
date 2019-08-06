@@ -178,6 +178,8 @@ en:
       column_title: "Income and Expense in "
       intents: "Intent Saving In Year"
       old_month: "Previous month report"
+      intents_title: "Saving money"
+      table_title: "Transaction in Year"
     table:
       name_column:
         stt_col: "#"
