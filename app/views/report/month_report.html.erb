@@ -34,62 +34,49 @@
           <h1 class="panel-title"><%= t "month_report.title.add_transaction"%></h1>
         </div>
         <div class="panel-body">
-          <div class="form-group">
-            <label for="exampleInputEmail1"><%= t "month_report.title.amout"%></label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1"><%= t "month_report.title.time"%></label>
-            <div class="input-group date" id="datetimepicker3">
-              <input type="text" class="form-control" />
-              <span class="input-group-addon">
-                  <span class="glyphicon glyphicon-time"></span>
-              </span>
+          <%= form_for :transaction, url: finances_user_path do |f|  %>
+            <div class="form-group">
+              <label for="exampleInputEmail1"><%= t "month_report.title.amout"%></label>
+              <%= f.text_field :amout, class: "form-control f_number2", id: "exampleInputEmail1"%>
             </div>
-          </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1"><%= t "month_report.title.time"%></label>
+              <div class="input-group date" id="datetimepicker3">
+                <%= f.text_field :date, class: "form-control"%>
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-time"></span>
+                </span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1"><%= t "month_report.title.category"%></label>
+              <select name="transaction[category_id]">
+                <% @categories_user.each do |category| %>
+                  <option value="<%= category.id %>"><%= category.name %></option>
+                <% end %>
+              </select>
+            </div>
+            <div>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1"><%= t "month_report.title.note"%></label>
+              <div> <%= f.text_area :name, class: "form-control", id: "exampleFormControlTextarea1", rows: "3" %></div>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1"><%= t "month_report.title.choice"%></label>
+              <div><%= f.radio_button :status, "1",class: "col-md-6", :checked => true %><%= t "month_report.transaction.income"%></div>
+              <div><%= f.radio_button :status, "0", class: "col-md-6" %><%= t "month_report.transaction.expense"%></div>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1"><%= t "month_report.transaction.permanent"%></label> 
+              <div><%= t "month_report.transaction.permanent"%><%= f.check_box :staticExpense, class: "col-md-6" %></div>
+              <%= f.hidden_field :staticExpense, value: "0" %>
+            </div>
+            <%= f.submit t("button.save"), class: "btn btn-primary btn-sm btn-save-report" %>
+          <% end %>
         </div>
-        <div class="col-md-4">
-          <div class="panel panel-success">
-            <div class="panel-heading">
-              <h1 class="panel-title"><%= t "month_report.title.add_transaction"%></h1>
-            </div>
-            <div class="panel-body">
-              <div class="form-group">
-                <label for="exampleInputEmail1"><%= t "month_report.title.amout"%></label>
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
-              </div>
-              <div class="form-group">
-                <label for="exampleInputEmail1"><%= t "month_report.title.time"%></label>
-                <div class="input-group date" id="datetimepicker3">
-                  <input type="text" class="form-control" />
-                  <span class="input-group-addon">
-                      <span class="glyphicon glyphicon-time"></span>
-                  </span>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="exampleInputEmail1"><%= t "month_report.title.category"%></label>
-                <select class="form-control add_transaction" >
-                  <optgroup label="Income">
-                    <option value="AK">Alaska</option>
-                    <option value="HI">Hawaii</option>
-                  </optgroup>
-                  <optgroup label="Expense">
-                    <option value="AK">Alaska</option>
-                    <option value="HI">Hawaii</option>
-                  </optgroup>
-                  <optgroup label="Dept/Loan">
-                    <option value="AK">Alaska</option>
-                    <option value="HI">Hawaii</option>
-                  </optgroup>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="exampleFormControlTextarea1"><%= t "month_report.title.note"%></label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-              </div>
-            </div>
-          </div>
+      </div>
           <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
             <%= t "month_intense" %>
           </button>

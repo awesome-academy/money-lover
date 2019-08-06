@@ -20,6 +20,7 @@ class ReportController < ApplicationController
       format.js
       format.html
     end
+    @categories_user = Category.by_user current_user.id
   end
 
   def year_report

@@ -8,4 +8,8 @@ module ApplicationHelper
       page_title + " | " + base_title
     end
   end
+
+  def format_number number
+    number.to_s.gsub(/[,]/,'').to_f
+  end
 end

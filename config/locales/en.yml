@@ -74,6 +74,7 @@ en:
     success: "Successful"
     update_success: "Update Successful"
     update_fail: "Please rewrite"
+    update_fail1: "Please rewrite1"
   mail:
     password_reset: "password reset"
     head: "To reset your password click the link below:"
@@ -168,6 +169,11 @@ en:
       not_found: "Not found data!"
       select_date: "Please Select the Date"
     account: "Account"
+    transaction:
+      permanent: "Permanent"
+      income: "Income"
+      expense: "Expense"
+      choice: "Income/Expense"
   home: "Home"
   saving:
     setup: "Setup spending"

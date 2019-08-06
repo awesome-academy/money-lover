@@ -3,4 +3,8 @@ $(document).on('turbolinks:load', function() {
       numeral: true,
       numeralThousandsGroupStyle: 'thousand'
   });
+  var cleave = new Cleave('.f_number2', {
+      numeral: true,
+      numeralThousandsGroupStyle: 'thousand'
+  });
 });

@@ -10,14 +10,12 @@ class User < ApplicationRecord
 
   has_many :finances_users, dependent: :destroy
   has_many :finances, through: :finances_users
+  accepts_nested_attributes_for :finances_users
 
   has_many :categories_users, dependent: :destroy
   has_many :categories, through: :categories_user
 
   belongs_to :saving, optional: true
-
-  has_many :finances_users
-  has_many :finances, through: :finances_users
 
   has_many :categories_users
   has_many :categories, through: :categories_user
