@@ -174,6 +174,8 @@ en:
       footer: "RubyTeam 2019 "
       not_found: "Not found data!"
       select_date: "Please Select the Date"
+      need_save: "This month, you need"
+      complete: "to complete your year intense's savings."
     account: "Account"
     transaction:
       permanent: "Permanent"
@@ -202,10 +204,13 @@ en:
         month: "Month"
         income: "Income"
         expense: "Expense"
-        saved: "Savings"
+        saved: "Intense Savings"
         amount: "Amount"
         intense: "Intense"
     other:
+      need_save: "From next month, you need saved"
+      per_month: "/month"
+      vnd: "VND"
       month: " months"
     month:
       month: "Month"

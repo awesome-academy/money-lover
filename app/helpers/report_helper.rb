@@ -17,4 +17,8 @@ module ReportHelper
     params_page ||= Settings.page_index
     (params_page.to_i - 1) * per_page.to_i + index.to_i + 1
   end
+
+  def getMonth
+    Date.today.strftime("%m")
+  end
 end
