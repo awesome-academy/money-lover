@@ -1,6 +1,6 @@
 module AdminHelper
   def category_options categories
-    categories.pluck :name, :id
+    categories.pluck(:name, :id).unshift [t("option.root"), Settings.value_root]
   end
 
   def convert_hash_to_array_hash hashObj
@@ -16,5 +16,9 @@ module AdminHelper
       end
     end
     arrayHashObj
+  end
+
+  def create_id prefix, id
+    "#{prefix}_#{id}"
   end
 end

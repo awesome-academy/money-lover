@@ -1,8 +1,16 @@
 class Admin::UsersController < Admin::BaseAdminController
-  before_action :get_user, except: %i(index new create)
+  before_action :get_user, except: %i(index new create search)
 
   def index
-    @users = User.page(params[:page]).per Settings.users_per_page
+    if params[:search].present?
+      @users = User.search(params[:search]).page(params[:page]).per Settings.users_per_page
+    else
+      @users = User.page(params[:page]).per Settings.users_per_page
+    end
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 
   def new

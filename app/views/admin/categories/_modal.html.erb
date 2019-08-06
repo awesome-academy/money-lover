@@ -1,0 +1,28 @@
+<div id=<%= create_id Settings.id_modal, category.id %> class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">
+          <%= t("title.edit", obj: Category.name) %>
+        </h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for [:admin, category] do |f| %>
+          <%= render "shared/error_messages", object: f.object %>
+
+          <%= f.label :name %>
+          <%= f.text_field :name, class: "form-control" %>
+
+          <div class="ui-widget mb-15">
+            <%= f.label :parent_id %>
+            <%= f.select :parent_id, options_for_select(category_options(Category.category_select(category.id)), selected: category.parent_id), {class: "select-autocomplete"} %>
+          </div>
+
+          <%= f.submit t("button.update"), class: "btn btn-primary" %>
+          <button type="button" class="btn btn-default" data-dismiss="modal"><%= t "button.close" %></button>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

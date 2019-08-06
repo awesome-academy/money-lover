@@ -2,7 +2,15 @@ class Admin::SavingsController < Admin::BaseAdminController
   before_action :get_saving, only: %i(edit update destroy)
 
   def index
-    @savings = Saving.page(params[:page]).per Settings.savings_per_page
+    if params[:search].present?
+      @savings = Saving.search(params[:search]).page(params[:page]).per Settings.savings_per_page
+    else
+      @savings = Saving.page(params[:page]).per Settings.savings_per_page
+    end
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 
   def edit; end
@@ -41,7 +49,9 @@ class Admin::SavingsController < Admin::BaseAdminController
 
   private
     def saving_params
-      params.require(:saving).permit Saving::SAVING_PARAMS
+      sav_params = params.require(:saving).permit Saving::SAVING_PARAMS
+      sav_params[:saving_in_year] = format_number(sav_params[:saving_in_year]).to_s
+      sav_params
     end
 
     def get_saving

@@ -1,11 +1,8 @@
-<div class="col-md-6 col-md-offset-3">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="action mb-0">
-        <%= link_to t("button.new"), new_admin_category_path, class: "btn btn-info" %>
-      </div>
-    </div>
+<div class="col-md-12">
+  <div class="alert" id="noti">
   </div>
+</div>
+<div class="col-md-7">
   <div class="panel panel-primary mt-20">
     <div class="panel-heading">
       <%= t "table.title.categories" %>
@@ -16,6 +13,29 @@
           <%= render "category", category: category %>
         <% end %>
       </div>
+    </div>
+  </div>
+</div>
+<div class="col-md-5">
+  <div class="panel panel-primary mt-20">
+    <div class="panel-heading">
+      <%= t("title.create", obj: Category.name) %>
+    </div>
+    <div class="panel-body">
+      <%= form_for [:admin, @category] do |f| %>
+        <%= render "shared/error_messages", object: f.object %>
+
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "form-control" %>
+
+        <div class="ui-widget mb-15">
+          <%= f.label :parent_id %>
+          <%= f.select :parent_id, options_for_select(category_options @categories),{include_blank: ""}, {class: "select-autocomplete"} %>
+        </div>
+
+        <%= f.submit t("button.save"), class: "btn btn-primary" %>
+        <%= link_to t("button.back"), :back, class: "btn btn-default" %>
+      <% end %>
     </div>
   </div>
 </div>

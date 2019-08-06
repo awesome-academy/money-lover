@@ -78,21 +78,12 @@ end
 end
 
 root_category = [
-  "Bills & Utilities",
-  "Bussiness",
+  "Expenditure needed",
+  "Savings for future",
   "Education",
-  "Entertainment",
-  "Family",
-  "Fees & Charges",
-  "Food & Beverage",
-  "Friends & Lover",
-  "Gifts & Donations",
-  "Health & Fitness",
-  "Insurances",
+  "Enjoy",
   "Investment",
-  "Shopping",
-  "Transportation",
-  "Travel"
+  "Charity"
 ]
 
 root_category.each do |x|
@@ -101,11 +92,13 @@ root_category.each do |x|
   )
 end
 
-sub_cat_1 = ["Electricity", "Gas", "Internet", "Phone", "Rental","Television", "Water"]
-sub_cat_3 = ["Books", "Learning English"]
-sub_cat_4 = ["Games", "Movies"]
+sub_cat_1 = ["Personal", "Rental", "Transportation", "Family"]
+sub_cat_2 = ["Shopping", "Traveling"]
+sub_cat_3 = ["Course", "Books"]
+sub_cat_4 = ["Relaxing", "Spa", "Other"]
+sub_cat_5 = ["Real Estate", "Savings"]
 
-[1,3,4].each do |x|
+[1,2,3,4,5].each do |x|
   sub_cat = eval("sub_cat_#{x}")
   sub_cat.each do |y|
     Category.create!(
@@ -151,7 +144,7 @@ end
 
 50.times do |n|
   r = Random.new
-  category_id = r.rand(1...15)
+  category_id = r.rand(15...19)
   user_id = r.rand(1...8)
   CategoriesUser.create!(
     category_id: category_id,

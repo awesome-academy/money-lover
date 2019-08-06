@@ -1,0 +1,2 @@
+$('#table-saving').html('<%= j render "admin/savings/saving", savings: @savings %>');
+$('#paginator').html('<%= j paginate @savings, remote: true, theme: "twitter-bootstrap-3" %>')
