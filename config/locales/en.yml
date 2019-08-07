@@ -29,10 +29,13 @@ en:
       _12: "Dec"
     label:
       enter_year: "Enter year: "
+      search: "Search: "
     alert:
       no_result: 'No data in %{obj} to statistic'
       no_data: "No data to statistic"
-
+    combobox:
+      show_all: "Show all items"
+      not_match: " didn't match any item"
   sessions:
     login: "Log in"
     forgot_password: "Forgot password"
@@ -53,6 +56,8 @@ en:
     back: "Back"
     back_to_home: "Back to home"
     submit: "Show statistic"
+    search: "Search"
+    edit: "Edit"
   users:
     create_my_account: "Create my account"
     profile: "Profile"
@@ -114,6 +119,7 @@ en:
       cat_name: "Category Name"
   option:
     root: "<< Root >>"
+    search_cat: "Search category"
   alert:
     confirm_del: "Are you sure?"
     created: '%{obj} Created'

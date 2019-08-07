@@ -3,7 +3,24 @@
   <div class="cat-parent">
     <div class="category-item">
       <span class="glyphicon glyphicon-plus-sign caret-custom"></span>
-      <%= link_to category.name, edit_admin_category_path(category), class: "cat-link" %>
+      <span class="cat-link">
+        <%= category.name %>
+      </span>
+      <div class="dropdown">
+        <button class="btn btn-success dropdown-toggle btn-config btn-sm" type="button" id=<%= create_id Settings.id_tool_cat, category.id %> data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          <span class="glyphicon glyphicon-cog"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby=<%= create_id Settings.id_tool_cat, category.id %> >
+          <li>
+            <a type="button" data-toggle="modal" data-target="#<%= create_id Settings.id_modal, category.id %>">
+              <%= t "button.edit" %>
+            </a>
+          </li>
+          <li>
+            <%= link_to t("button.delete"), admin_category_path(category), method: :delete, remote: true, class: "btn-edit", data: { confirm: t("alert.confirm_del") } %>
+          </li>
+        </ul>
+      </div>
     </div>
     <div class="list-cat-child">
       <% @child_cats.each do |child_cat| %>
@@ -11,8 +28,27 @@
       <% end %>
     </div>
   </div>
+  <%= render "modal", category: category %>
 <% else %>
   <div class="category-item">
-    <%= link_to category.name, edit_admin_category_path(category), class: "cat-link" %>
+    <span class="cat-link">
+      <%= category.name %>
+    </span>
+    <div class="dropdown">
+      <button class="btn btn-success dropdown-toggle btn-config btn-sm" type="button" id=<%= create_id Settings.id_tool_cat, category.id %> data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        <span class="glyphicon glyphicon-cog"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby=<%= create_id Settings.id_tool_cat, category.id %> >
+        <li>
+          <a type="button" data-toggle="modal" data-target="#<%= create_id Settings.id_modal, category.id %>">
+            <%= t "button.edit" %>
+          </a>
+        </li>
+        <li>
+          <%= link_to t("button.delete"), admin_category_path(category), method: :delete, remote: true, class: "btn-delete", data: { confirm: t("alert.confirm_del") } %>
+        </li>
+      </ul>
+    </div>
   </div>
+  <%= render "modal", category: category %>
 <% end %>

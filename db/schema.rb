@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_23_061738) do
+ActiveRecord::Schema.define(version: 2019_08_01_040743) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name"
@@ -62,7 +62,6 @@ ActiveRecord::Schema.define(version: 2019_07_23_061738) do
     t.string "address"
     t.string "avatar"
     t.string "username"
-    t.string "password"
     t.boolean "admin"
     t.string "password_digest"
     t.string "remember_digest"
@@ -72,6 +71,7 @@ ActiveRecord::Schema.define(version: 2019_07_23_061738) do
     t.bigint "saving_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name", "email", "phone", "address"], name: "name_email_phone_address", type: :fulltext
     t.index ["saving_id"], name: "index_users_on_saving_id"
   end
 

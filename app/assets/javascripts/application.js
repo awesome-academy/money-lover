@@ -5,7 +5,9 @@
 //= require rails-ujs
 //= require i18n/translations
 //= require turbolinks
+//= require jquery-ui/widgets/autocomplete
 //= require custom
+//= require ajax_search
 //= require canvasjs.min.js
 //= require numeral.min.js
 //= require cleave.min.js

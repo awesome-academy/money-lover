@@ -2,7 +2,7 @@
   <%= render "shared/error_messages", object: f.object %>
 
   <%= f.label :saving_in_year %>
-  <%= f.number_field :saving_in_year, class: "form-control" %>
+  <%= f.text_field :saving_in_year, class: "form-control f_number1" %>
 
   <%= f.submit yield(:button_text), class: "btn btn-primary" %>
   <%= link_to t("button.back"), :back, class: "btn btn-default" %>

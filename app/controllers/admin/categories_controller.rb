@@ -3,7 +3,8 @@ class Admin::CategoriesController < Admin::BaseAdminController
   before_action :get_category_select, only: %i(new edit)
 
   def index
-    @categories = Category.root_category
+    @category = Category.new
+    @categories = Category.default_category.root_category
   end
 
   def new
@@ -17,7 +18,7 @@ class Admin::CategoriesController < Admin::BaseAdminController
       redirect_to admin_categories_path
     else
       get_category_select
-      render :new
+      render :index
     end
   end
 
@@ -31,17 +32,13 @@ class Admin::CategoriesController < Admin::BaseAdminController
       redirect_to admin_categories_path
     else
       get_category_select
-      render :edit
+      render :index
     end
   end
 
   def destroy
-    if @category.destroy
-      flash[:success] = t("alert.deleted", obj: Category.name)
-    else
-      flash[:success] = t("alert.delete_failed", obj: Category.name)
-    end
-    redirect_to admin_categories_path
+    @status = :success if @category.destroy
+    respond_to :js
   end
 
   private

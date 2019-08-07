@@ -1,8 +1,10 @@
-<tr class="odd gradeX">
-  <td><%= saving.id %></td>
-  <td><%= saving.saving_in_year %></td>
-  <td>
-    <%= link_to t("button.edit"), edit_admin_saving_path(saving), class: "btn btn-success" %>
-    <%= link_to t("button.delete"), admin_saving_path(saving), class: "btn btn-danger", method: :delete, data: { confirm: t("alert.confirm_del") } %>
-  </td>
-</tr>
+<% savings.each_with_index do |saving, index| %>
+  <tr class="odd gradeX">
+    <td><%= page_index params[:page], index, Settings.savings_per_page %></td>
+    <td><%= standardized saving.saving_in_year %></td>
+    <td>
+      <%= link_to t("button.edit"), edit_admin_saving_path(saving), class: "btn btn-success" %>
+      <%= link_to t("button.delete"), admin_saving_path(saving), class: "btn btn-danger", method: :delete, data: { confirm: t("alert.confirm_del") } %>
+    </td>
+  </tr>
+<% end %>

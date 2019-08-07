@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get "/statistic", to: "admin_statistic#index"
     get "/statistic/show", to: "admin_statistic#show"
+    get "/users/search", to: "users#search"
 
     resources :users
     resources :savings
