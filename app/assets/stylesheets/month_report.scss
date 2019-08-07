@@ -80,26 +80,28 @@ table.dataTable tbody {
   margin-top: 2%;
 }
 
+.report_color tr:nth-child(even) {
+  background-color: $dark-gray_2e2e2e;
+  color: $white;
+}
+
 .saving-color {
-  background-color: $yellow_F5F528;
+  background-color: $yellow_F5F528 !important;
 }
 
 .danger-color {
-  background-color: $state-danger-text;
+  background-color: $state-danger-text !important;
 }
 
 .success-color {
-  background-color: $green_189E16;
+  background-color: $green_189E16 !important;
 }
 
 .text_white {
   color: $bg_e5;
 }
 
-tr.year-report:nth-child(2n+1) {
-  background-color: $dark-gray_2e2e2e;
-  color: $white;
-}
+
 
 .flex-container {
   display: flex;

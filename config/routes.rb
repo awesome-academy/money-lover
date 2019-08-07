@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get "/month_report", to: "report#month_report"
   get "/admin", to: "admin/dashboard#index"
   get "/year_report", to: "report#year_report"
+  get "/recommend", to: "recommend#month_recommend"
 
   post "/login", to: "sessions#create"
   post "/finances_user", to: "finances_user#create"

@@ -31,3 +31,9 @@ search2: "search2"
 value_root: -1
 id_tool_cat: "tool_cat"
 id_modal: "modal"
+expenditure_needed_percent: 50
+savings: 10
+education: 10
+enjoy: 10
+investment: 10
+charity: 5
