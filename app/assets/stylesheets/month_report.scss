@@ -109,3 +109,8 @@ tr.year-report:nth-child(2n+1) {
 #old_month_report-btn {
   margin-top: 10px;
 }
+
+#chartContainer_month, #barChartContainer_month {
+  height: 50%;
+  width: 100%;
+}

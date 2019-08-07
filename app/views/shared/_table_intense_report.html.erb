@@ -25,6 +25,9 @@
       </tr>
       </tbody>
     </table>
+    <div class="alert alert-danger" role="alert"">
+      <p><%= t "year_report.other.need_save" %> <%= standardized(((format_number(@saving_in_year).to_i + format_number(@savings).to_i) /format_number(getMonth()).to_i).abs) %> <%= t "year_report.other.vnd" %><%= t "year_report.other.per_month" %></p>
+    </div>
     <button type="button" class="btn btn-info btn-sm btn-year-saving" id="saving-btn" data-toggle="modal" data-target="#myModal2">
       <%= t "saving.year_saving" %>
     </button>
