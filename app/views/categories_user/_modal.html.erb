@@ -10,13 +10,17 @@
       <div class="modal-body">
         <%= form_for :categories_user, url: categories_user_path(category), method: :patch do |f| %>
           <%= f.label :name %>
-          <%= f.text_field :name, class: "form-control" %>
+          <%= f.text_field :name, value: category.name, class: "form-control" %>
 
           <div class="ui-widget mb-15">
             <%= f.label :parent_id %>
             <select name="categories_user[parent_id]">
-            <% @categories_user.each do |category| %>
-              <option value="<%= category.id %>"><%= category.name %></option>
+            <% @categories_user.each do |cate| %>
+              <% if cate.id == category.parent_id %>
+                <option value="<%= cate.id %>" selected="selected"><%= cate.name %></option>
+              <% else %>
+                <option value="<%= cate.id %>"><%= cate.name %></option>
+              <% end %>
             <% end %>
           </select>
           </div>

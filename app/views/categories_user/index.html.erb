@@ -24,7 +24,7 @@
     <div class="panel-body">
       <%= form_for :categories_user, url: categories_user_index_path do |f| %>
         <%= f.label :name %>
-        <%= f.text_field :name, class: "form-control" %>
+        <%= f.text_field :name, value: "", class: "form-control" %>
         <div class="ui-widget mb-15">
           <%= f.label :parent_id %>
           <select name="categories_user[parent_id]">

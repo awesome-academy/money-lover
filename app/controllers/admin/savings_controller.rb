@@ -3,7 +3,7 @@ class Admin::SavingsController < Admin::BaseAdminController
 
   def index
     if params[:search].present?
-      @savings = Saving.search(params[:search]).page(params[:page]).per Settings.savings_per_page
+      @savings = Saving.search(format_number params[:search]).page(params[:page]).per Settings.savings_per_page
     else
       @savings = Saving.page(params[:page]).per Settings.savings_per_page
     end

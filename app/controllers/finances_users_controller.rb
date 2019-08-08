@@ -52,7 +52,6 @@ class FinancesUsersController < ApplicationController
       fina_user_params
     end
 
-
     def finance_params
       params.require(:transaction).permit Finance::FINANCE_PARAMS
     end

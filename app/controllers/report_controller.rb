@@ -18,7 +18,7 @@ class ReportController < ApplicationController
     expense_amout: expense_transactions.pluck(:amout).sum}
 
     @number_transactions = JSON.parse(@transactions.to_json).size
-    @categories_user = Category.by_user current_user.id
+    @categories_user = Category.categories_for_user current_user.id
 
     respond_to do |format|
       format.js
@@ -32,6 +32,7 @@ class ReportController < ApplicationController
     @expense = yearService.perform_percent_expense
     @expense_sum = yearService.sum_transaction(@expense_amout)
     @income_sum = yearService.sum_transaction(@income_amout)
+
     @saving = Saving.new
   end
 

@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 2019_08_01_040743) do
     t.bigint "saving_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name", "email", "phone", "address"], name: "name_email_phone_address", type: :fulltext
+    t.index ["name", "username", "email", "phone", "address"], name: "name_email_phone_address", type: :fulltext
     t.index ["saving_id"], name: "index_users_on_saving_id"
   end
 

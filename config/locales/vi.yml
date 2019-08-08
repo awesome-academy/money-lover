@@ -151,7 +151,7 @@ vi:
       lover: "Lover"
       report: "Báo cáo"
       chart: "Biểu đồ"
-      plans: "Kế hoạch"
+      plans: "Gợi ý chi tiêu"
       category_user: "Danh mục cá nhân"
     link_page:
       move_chart: "*Xem biểu đồ"
@@ -172,6 +172,8 @@ vi:
       sum_expense_col: "Tổng chi"
       saving: "Tiến kiệm"
       date_col: "Thời gian"
+      permanent: "Dài hạn"
+      action: "Hành động"
     name_chart:
       income: "Thu"
       expense: "Chi"
@@ -243,7 +245,7 @@ vi:
       expenditure: "Chi tiêu bắt buộc"
       saving: "Tiết kiệm cho tương lai"
       education: "Đầu tư cho giáo dục"
-      enjoy: "Giải trí"
+      enjoy: "Hưởng thụ"
       investment: "Đầu tư"
       charity: "Từ thiện"
       actual_expenditure: "Chi thực tế"
