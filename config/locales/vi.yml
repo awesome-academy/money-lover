@@ -30,6 +30,7 @@ vi:
       _12: "Tháng 12"
     label:
       enter_year: "Nhập năm: "
+      search: "Tìm kiếm"
     alert:
       no_result: 'Không có dữ liệu %{obj} để thống kê'
       no_data: "Không có dữ liệu để thống kê"
