@@ -1,0 +1,53 @@
+<div class="col-md-12">
+  <div class="alert" id="noti">
+  </div>
+</div>
+<div class="col-md-7">
+  <div class="panel panel-primary mt-20">
+    <div class="panel-heading">
+      <%= t "table.title.categories" %>
+    </div>
+    <div class="panel-body px-0">
+      <div class="categories">
+        <% @categories_not_user.each do |category| %>
+          <%= render "category_default", category: category %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col-md-5">
+  <div class="panel panel-primary mt-20">
+    <div class="panel-heading">
+      <%= t("title.create", obj: Category.name) %>
+    </div>
+    <div class="panel-body">
+      <%= form_for :categories_user, url: categories_user_index_path do |f| %>
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "form-control" %>
+        <div class="ui-widget mb-15">
+          <%= f.label :parent_id %>
+          <select name="categories_user[parent_id]">
+            <% @categories_user.each do |category| %>
+              <option value="<%= category.id %>"><%= category.name %></option>
+            <% end %>
+          </select>
+        </div>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.submit t("button.save"), class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="panel panel-primary mt-20">
+    <div class="panel-heading">
+      <%= t "title.category_user" %>
+    </div>
+    <div class="panel-body px-0">
+      <div class="categories">
+        <% @categories_by_user.each do |category| %>
+          <%= render "category", category: category %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

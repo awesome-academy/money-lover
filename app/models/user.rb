@@ -17,7 +17,7 @@ class User < ApplicationRecord
 
   belongs_to :saving, optional: true
 
-  has_many :categories_users
+  has_many :categories_user
   has_many :categories, through: :categories_user
 
   belongs_to :saving

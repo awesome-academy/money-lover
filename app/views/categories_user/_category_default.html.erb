@@ -1,0 +1,52 @@
+<% @child_cats = category.child_categories %>
+<% if @child_cats.size > Settings.zero %>
+  <div class="cat-parent">
+    <div class="category-item">
+      <span class="glyphicon glyphicon-plus-sign caret-custom"></span>
+      <span class="cat-link">
+        <%= category.name %>
+      </span>
+      <div class="dropdown">
+        <ul class="dropdown-menu" aria-labelledby=<%= create_id Settings.id_tool_cat, category.id %> >
+          <li>
+            <a type="button" data-toggle="modal" data-target="#<%= create_id Settings.id_modal, category.id %>">
+              <%= t "button.edit" %>
+            </a>
+          </li>
+          <li>
+            <%= link_to t("button.delete"), categories_user_path(category), method: :delete, remote: true, class: "btn-edit", data: { confirm: t("alert.confirm_del") } %>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="list-cat-child">
+      <% @child_cats.each do |child_cat| %>
+        <% if check?(child_cat) %>
+          <p></p>
+        <% else %>
+          <%= render "category", category: child_cat %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <%= render "modal", category: category %>
+<% else %>
+  <div class="category-item">
+    <span class="cat-link">
+      <%= category.name %>
+    </span>
+    <div class="dropdown">
+      <ul class="dropdown-menu" aria-labelledby=<%= create_id Settings.id_tool_cat, category.id %> >
+        <li>
+          <a type="button" data-toggle="modal" data-target="#<%= create_id Settings.id_modal, category.id %>">
+            <%= t "button.edit" %>
+          </a>
+        </li>
+        <li>
+          <%= link_to t("button.delete"), categories_user_path(category), method: :delete, remote: true, class: "btn-delete", data: { confirm: t("alert.confirm_del") } %>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <%= render "modal", category: category %>
+<% end %>

@@ -7,7 +7,10 @@ class ApplicationController < ActionController::Base
   before_action :require_login
 
   def set_locale
-    I18n.locale = params[:locale] || I18n.default_locale
+    if params[:locale].present?
+      set_param_locale params[:locale]
+    end  
+    I18n.locale = cookies[:locale] || I18n.default_locale
   end
 
   def logged_in_user

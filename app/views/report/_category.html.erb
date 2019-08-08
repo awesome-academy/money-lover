@@ -1,0 +1,10 @@
+<% @child_cats = category.child_categories %>
+<% if @child_cats.size > Settings.zero %>
+  <optgroup label="<%= category.name %>">
+    <% @child_cats.each do |child_cat| %>
+      <%= render "category", category: child_cat %>
+    <% end %>
+  </optgroup>
+<% else %>
+  <option value="<%= category.id %>"><%= category.name %></option>
+<% end %>

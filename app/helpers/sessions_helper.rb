@@ -29,6 +29,7 @@ module SessionsHelper
     user.forget
     cookies.delete :user_id
     cookies.delete :remember_token
+    cookies.delete :locale
   end
 
   def log_out
@@ -48,5 +49,9 @@ module SessionsHelper
 
   def admin?
     current_user.admin
+  end
+
+  def set_param_locale language
+    cookies.permanent[:locale] = language
   end
 end

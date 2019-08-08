@@ -1,0 +1,30 @@
+<div id=<%= create_id Settings.id_modal, category.id %> class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">
+          <%= t("title.edit", obj: Category.name) %>
+        </h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for :categories_user, url: categories_user_path(category), method: :patch do |f| %>
+          <%= f.label :name %>
+          <%= f.text_field :name, class: "form-control" %>
+
+          <div class="ui-widget mb-15">
+            <%= f.label :parent_id %>
+            <select name="categories_user[parent_id]">
+            <% @categories_user.each do |category| %>
+              <option value="<%= category.id %>"><%= category.name %></option>
+            <% end %>
+          </select>
+          </div>
+
+          <%= f.submit t("button.update"), class: "btn btn-primary" %>
+          <button type="button" class="btn btn-default" data-dismiss="modal"><%= t "button.close" %></button>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,17 +1,16 @@
 class FinancesUserController < ApplicationController
   def create
-    finance = Finance.new finance_params
-    if finance.save
+    finance = Finance.find_by(name: finance_params[:name], category_id: finance_params[:category_id])
+    ActiveRecord::Base.transaction do
+      finance ||= Finance.create! finance_params
       finances_user = finance.finances_users.build finances_user_params
-      if finances_user.save
-        flash[:success] = t "flash.success"
-      else
-        flash[:danger] = t "flash.update_fail1"
-      end
-    else
-      flash[:danger] = t "flash.update_fail"
+      return unless finances_user.save!
+      flash[:success] = t "flash.success"
     end
     redirect_to month_report_path
+  rescue
+    flash[:danger] = t("flash.update_fail")
+    redirect_to categories_user_index_path
   end
 
   private

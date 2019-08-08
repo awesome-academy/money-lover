@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   resources :password_resets, except: %i(destroy index show)
   resources :month_intenses, only: %i(new create)
   resources :savings, only: %i(new create)
-  resources :categories_user, only: %i(new create index destroy)
+  resources :categories_user, except: %i(show)
 
   namespace :admin do
     get "/statistic", to: "admin_statistic#index"
