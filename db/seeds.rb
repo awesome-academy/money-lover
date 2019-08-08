@@ -78,12 +78,12 @@ end
 end
 
 root_category = [
-  "Expenditure needed",
-  "Savings for future",
-  "Education",
-  "Enjoy",
-  "Investment",
-  "Charity"
+  "Chi tiêu bắt buộc",
+  "Tiết kiệm cho tương lai",
+  "Đầu tư cho giáo dục",
+  "Hưởng thụ",
+  "Đầu tư",
+  "Từ thiện"
 ]
 
 root_category.each do |x|
@@ -92,13 +92,14 @@ root_category.each do |x|
   )
 end
 
-sub_cat_1 = ["Personal", "Rental", "Transportation", "Family"]
-sub_cat_2 = ["Shopping", "Traveling"]
-sub_cat_3 = ["Course", "Books"]
-sub_cat_4 = ["Relaxing", "Spa", "Other"]
-sub_cat_5 = ["Real Estate", "Savings"]
+sub_cat_1 = ["Tiền ăn", "Tiền thuê nhà", "Tiền đi lại", "Tiền nước", "Tiền điện", "Tiền mạng", "Học phí"]
+sub_cat_2 = ["Gửi ngân hàng", "Mua nhà", "Cưới hỏi"]
+sub_cat_3 = ["Khóa học", "Sách", "Tạp chí"]
+sub_cat_4 = ["Mát xa", "Spa", "Tắm trắng", "Xem phim", "Xem show ca nhạc"]
+sub_cat_5 = ["Chứng khoán", "Kinh doanh", "Bất động sản", "Khởi nghiệp"]
+sub_cat_6 = ["Từ thiện", "Giúp đỡ trẻ em nghèo"]
 
-[1,2,3,4,5].each do |x|
+[1,2,3,4,5,6].each do |x|
   sub_cat = eval("sub_cat_#{x}")
   sub_cat.each do |y|
     Category.create!(
@@ -108,7 +109,7 @@ sub_cat_5 = ["Real Estate", "Savings"]
   end
 end
 
-income = ["Salary", "Stock", "Business", "Scholarship", "Gas", "Electric", "Water", "Food", "Rental"]
+income = ["Lương", "Cổ phiếu", "Kinh doanh", "Học bổng", "Xổ số", "Gameshow", "Cho vay", "Lãi ngân hàng"]
 
 income.each do |x|
   r = Random.new
@@ -116,7 +117,7 @@ income.each do |x|
   amout = 1000000 * r.rand(1...30)
   Finance.create!(
     category_id: category_id,
-    name: x,
+    name: x
   )
 end
 
@@ -125,7 +126,7 @@ def random_date_in_year(year)
   rand(Date.civil(year, 1, 1)..Date.civil(year, 12, 31))
 end
 
-5000.times do |n|
+2000.times do |n|
   r = Random.new
   finance_id = r.rand(1...8)
   user_id = r.rand(1...8)

@@ -24,7 +24,7 @@ class YearService
   end
 
   def sum_transaction arr
-    sum_transaction_private arr
+    arr.present? ? sum_transaction_private(arr) : Settings.zero
   end
 
   private
