@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   get "/recommend", to: "recommend#month_recommend"
 
   post "/login", to: "sessions#create"
-  post "/finances_user", to: "finances_user#create"
 
   delete "/logout",  to: "sessions#destroy"
 
@@ -19,6 +18,7 @@ Rails.application.routes.draw do
   resources :month_intenses, only: %i(new create)
   resources :savings, only: %i(new create)
   resources :categories_user, except: %i(show)
+  resources :finances_users, except: %i(index show new)
 
   namespace :admin do
     get "/statistic", to: "admin_statistic#index"

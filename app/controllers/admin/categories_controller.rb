@@ -5,6 +5,7 @@ class Admin::CategoriesController < Admin::BaseAdminController
   def index
     @category = Category.new
     @categories = Category.default_category.root_category
+    @list_categories = Category.default_category.list_category
   end
 
   def new

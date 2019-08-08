@@ -10,5 +10,5 @@ function format_number(str_id){
 $(document).on('turbolinks:load', function() {
   format_number('.f_number1');
   format_number('#search2');
-  format_number('.f_number2')
+  format_number('.f_number2');
 });

@@ -3,7 +3,8 @@ class Finance < ApplicationRecord
 
   has_many :finances_users, dependent: :destroy
   has_many :users, through: :finances_users
-  
+  accepts_nested_attributes_for :finances_users
+
   belongs_to :category
 
   delegate :name, to: :category, prefix: :cate

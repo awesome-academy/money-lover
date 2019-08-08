@@ -296,6 +296,7 @@ footer {
   left: 0;
   bottom: 0;
   width: 100%;
+  z-index: 99999;
   p {
     color: $red;
     margin-bottom: 0;

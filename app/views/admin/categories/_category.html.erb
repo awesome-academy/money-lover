@@ -1,4 +1,4 @@
-<% @child_cats = category.child_categories %>
+<% @child_cats = get_default_cate category.child_categories %>
 <% if @child_cats.size > Settings.zero %>
   <div class="cat-parent">
     <div class="category-item">

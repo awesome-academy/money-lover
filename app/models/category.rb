@@ -16,7 +16,7 @@ class Category < ApplicationRecord
   scope :by_user, ->(user_id){where id: CategoriesUser.where(user_id: user_id).pluck(:category_id)}
   scope :default_category, -> {where.not id: CategoriesUser.pluck(:category_id).uniq}
   scope :list_category, -> {pluck(:name, :id).unshift([I18n.t("option.root"), Settings.value_root])}
-  scope :by_user, ->(user_id){where id: CategoriesUser.where(user_id: user_id).pluck(:category_id)} 
+  scope :by_user, ->(user_id){where id: CategoriesUser.where(user_id: user_id).pluck(:category_id)}
   scope :categories_not_user, -> {where.not id: CategoriesUser.pluck(:category_id)}
   scope :categories_for_user, ->(user_id){where.not id: (CategoriesUser.no_by_user user_id).pluck(:category_id)}
   private
