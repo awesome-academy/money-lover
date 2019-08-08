@@ -21,4 +21,8 @@ module ReportHelper
   def getMonth
     Date.today.strftime("%m")
   end
+
+  def cal_money nums, percent
+    nums*percent/100
+  end
 end

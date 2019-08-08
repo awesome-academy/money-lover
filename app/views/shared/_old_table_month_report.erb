@@ -1,5 +1,10 @@
-<% @transactions_old_month.each_with_index do |transaction, index| %>
-<tr>
+<% @transactions_old_month.each_with_index do |transaction, index|
+if transaction.status
+  %>
+  <tr class = "success-color text_white">
+  <% else %>
+  <tr class = "danger-color text_white">
+  <% end %>
   <th scope="row"><%= page_index params[:old_month_page], index, Settings.old_month_per_page  %></th>
   <td><%= transaction.finance.cate_name %></td>
   <td><%= transaction.finance.name %></td>
@@ -11,21 +16,21 @@
   <td><%= standardized(transaction.amout.to_i) %></td>
 </tr>
 <% end %>
-<tr class="success-color text_white">
+<tr class="">
   <th></th>
   <td class = "font-weight-bold"><b><%= t "month_report.name_column.sum_income_col" %></b></td>
   <td></td>
   <td></td>
   <td><i><b><%= standardized(@income_sum) %></i></b></td>
 </tr>
-<tr class="danger-color text_white">
+<tr class="">
   <th></th>
   <td class = "font-weight-bold"><b><%= t "month_report.name_column.sum_expense_col" %></b></td>
   <td></td>
   <td></td>
   <td><i><b><%= standardized(@expense_sum) %></b></i></td>
 </tr>
-<tr class="saving-color text_white">
+<tr class="saving-color">
   <th></th>
   <td class = "font-weight-bold"><b><%= t "month_report.name_column.saving" %></b></td>
   <td></td>

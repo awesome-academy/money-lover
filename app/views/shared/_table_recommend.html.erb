@@ -1,0 +1,58 @@
+<table class="table report_color">
+  <thead class="thead-dark">
+    <tr class="report">
+      <th scope="col"><%= t "year_report.table.name_column.stt_col" %></th>
+      <th scope="col"><%= t "recommend.col.percent" %></th>
+      <th scope="col"><%= t "recommend.col.advice" %></th>
+    <tr>
+  </thead>
+  <tbody>
+    <tr >
+      <th scope="col"><%= t "recommend.col.income" %></th>
+      <td scope="col"><%= t "recommend.col.one_hundred_percent" %></td>
+      <td scope="col"><%= standardized(@sum_this_month_income) %></td>
+    <tr>
+    <tr>
+      <td><%= t "recommend.col.expenditure" %></td>
+      <td><%= t "recommend.col.fifty_percent" %></td>
+      <td scope="col" >
+        <%= standardized(cal_money(@sum_this_month_income, Settings.expenditure_needed_percent)) %>
+      </td>
+    </tr>
+    <tr>
+      <td><%= t "recommend.col.saving" %></td>
+      <td><%= t "recommend.col.ten_percent" %></td>
+      <td scope="col">
+        <%= standardized(cal_money(@sum_this_month_income, Settings.savings)) %>
+      </td>
+    </tr>
+    <tr>
+      <td><%= t "recommend.col.education" %></td>
+      <td><%= t "recommend.col.ten_percent" %></td>
+      <td>
+        <%= standardized(cal_money(@sum_this_month_income, Settings.education)) %>
+        </td>
+    </tr>
+    <tr>
+      <td><%= t "recommend.col.enjoy" %></td>
+      <td><%= t "recommend.col.ten_percent" %></td>
+      <td>
+        <%= standardized(cal_money(@sum_this_month_income, Settings.enjoy)) %>
+      </td>
+    </tr>
+    <tr>
+      <td><%= t "recommend.col.investment" %></td>
+      <td><%= t "recommend.col.ten_percent" %></td>
+      <td>
+        <%= standardized(cal_money(@sum_this_month_income, Settings.investment)) %>
+      </td>
+    </tr>
+    <tr>
+      <td><%= t "recommend.col.charity" %></td>
+      <td><%= t "recommend.col.five_percent" %></td>
+      <td>
+        <%= standardized(cal_money(@sum_this_month_income, Settings.charity)) %>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -146,6 +146,9 @@ en:
       columnChart: "Income/Expense Column's Chart"
       money: "Money"
       lover: "Lover"
+      chart: "Chart"
+      report: "Report"
+      plans: "Spending Plan"
     link_page:
       move_chart: "*Move to Chart"
       move_report: "*Move to Report"
@@ -176,6 +179,8 @@ en:
       select_date: "Please Select the Date"
       need_save: "This month, you need"
       complete: "to complete your year intense's savings."
+      to_date: "To"
+      from_date: "From"
     account: "Account"
     transaction:
       permanent: "Permanent"
@@ -226,3 +231,21 @@ en:
       t10: "October"
       t11: "November"
       t12: "December"
+  recommend:
+    title:
+      recommend_title: "Spending tips"
+    col:
+      income: "Sum's Income"
+      expenditure: "Expenditure needed"
+      saving: "Savings for future"
+      education: "Education"
+      enjoy: "Enjoy"
+      investment: "Investment"
+      charity: "Charity"
+      actual_expenditure: "Actual expenditure"
+      advice: "Advice"
+      percent: "Advice's Percent"
+      one_hundred_percent: "100%"
+      fifty_percent: "50%"
+      ten_percent: "10%"
+      five_percent: "5%"
