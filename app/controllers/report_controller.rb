@@ -18,11 +18,12 @@ class ReportController < ApplicationController
     expense_amout: expense_transactions.pluck(:amout).sum}
 
     @number_transactions = JSON.parse(@transactions.to_json).size
+    @categories_user = Category.by_user current_user.id
+
     respond_to do |format|
       format.js
       format.html
     end
-    @categories_user = Category.categories_for_user current_user.id
   end
 
   def year_report

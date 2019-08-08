@@ -8,6 +8,7 @@
 //= require jquery-ui/widgets/autocomplete
 //= require custom
 //= require ajax_search
+//= require custom_combobox
 //= require canvasjs.min.js
 //= require numeral.min.js
 //= require cleave.min.js

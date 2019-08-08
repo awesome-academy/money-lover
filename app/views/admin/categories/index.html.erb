@@ -30,11 +30,10 @@
 
         <div class="ui-widget mb-15">
           <%= f.label :parent_id %>
-          <%= f.select :parent_id, options_for_select(category_options @categories),{include_blank: ""}, {class: "select-autocomplete"} %>
+          <%= f.select :parent_id, options_for_select(@list_categories),{include_blank: ""}, {class: "select-autocomplete"} %>
         </div>
 
         <%= f.submit t("button.save"), class: "btn btn-primary" %>
-        <%= link_to t("button.back"), :back, class: "btn btn-default" %>
       <% end %>
     </div>
   </div>

@@ -1,6 +1,10 @@
 <% provide :title, t("month_report.title.month_report") %>
 
 <div class="container">
+  <div class="col-md-12">
+    <div class="alert" id="noti">
+    </div>
+  </div>
   <ul class="nav nav-tabs" role="tablist">
     <li class="active">
         <a href="#report" role="tab" data-toggle="tab">
@@ -61,6 +65,8 @@
                     <th scope="col"><%= t "month_report.name_column.income_col"%></th>
                     <th scope="col"><%= t "month_report.name_column.date_col"%></th>
                     <th scope="col"><%= t "month_report.name_column.amout_col"%></th>
+                    <th scope="col"><%= t "month_report.name_column.permanent"%></th>
+                    <th scope="col"><%= t "month_report.name_column.action"%></th>
                   </tr>
                 </thead>
                 <tbody id="table_this_month">
@@ -79,7 +85,7 @@
               <h1 class="panel-title"><%= t "month_report.title.add_transaction"%></h1>
             </div>
             <div class="panel-body">
-              <%= form_for :transaction, url: finances_user_path do |f|  %>
+              <%= form_for :transaction, url: finances_users_path do |f|  %>
                 <div class="form-group">
                   <label for="exampleInputEmail1"><%= t "month_report.title.amout"%></label>
                   <%= f.text_field :amout, class: "form-control f_number2", id: "exampleInputEmail1"%>

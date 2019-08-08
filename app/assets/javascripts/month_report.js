@@ -18,6 +18,7 @@ $( document ).on('turbolinks:load', function() {
     $('#datetimepicker3').datetimepicker({
       format: 'LL'
     });
+
   });
 
   //Bar Chart
@@ -71,7 +72,7 @@ $( document ).on('turbolinks:load', function() {
   chart.render();
 
 
-  $("select#select-old-report").change(function(){
+  $("#select-old-report").change(function(){
     var selectedMonth = $(this).children("option:selected").val();
 
     $.ajax({
@@ -109,4 +110,4 @@ $( document ).on('turbolinks:load', function() {
       alert(I18n.t('month_report.other.select_date'));
     }
   });
-})
+});

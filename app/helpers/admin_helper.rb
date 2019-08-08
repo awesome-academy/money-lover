@@ -1,6 +1,6 @@
 module AdminHelper
-  def category_options categories
-    categories.pluck(:name, :id).unshift [t("option.root"), Settings.value_root]
+  def category_options cat_id
+    Category.default_category.category_select(cat_id).list_category
   end
 
   def convert_hash_to_array_hash hashObj

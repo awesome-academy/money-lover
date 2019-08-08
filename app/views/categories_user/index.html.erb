@@ -9,7 +9,7 @@
     </div>
     <div class="panel-body px-0">
       <div class="categories">
-        <% @categories_not_user.each do |category| %>
+        <% @categories.each do |category| %>
           <%= render "category_default", category: category %>
         <% end %>
       </div>

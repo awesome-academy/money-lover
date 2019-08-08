@@ -16,7 +16,7 @@
 
           <div class="ui-widget mb-15">
             <%= f.label :parent_id %>
-            <%= f.select :parent_id, options_for_select(category_options(Category.category_select(category.id)), selected: category.parent_id), {class: "select-autocomplete"} %>
+            <%= f.select :parent_id, options_for_select(category_options(category.id), selected: category.parent_id), {}, {class: "select-autocomplete"} %>
           </div>
 
           <%= f.submit t("button.update"), class: "btn btn-primary" %>

@@ -16,30 +16,47 @@
     <% end %>
     <td><%= transaction.date %></td>
     <td><%= standardized(transaction.amout.to_i) %></td>
+    <td class="icon">
+      <% if transaction.staticExpense %>
+        <span class="glyphicon glyphicon-ok"></span>
+      <% else %>
+        <span class="glyphicon glyphicon-remove"></span>
+      <% end %>
+    </td>
+    <td class="actions">
+      <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle btn-config btn-sm" type="button" id=<%= create_id Settings.id_tool_cat, transaction.id %> data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          <span class="glyphicon glyphicon-cog"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby=<%= create_id Settings.id_tool_cat, transaction.id %> >
+          <li>
+            <%= link_to t("button.edit"), edit_finances_user_path(transaction), remote: true  %>
+          </li>
+          <li>
+            <%= link_to t("button.delete"), finances_user_path(transaction), method: :delete, class: "btn-delete", data: { confirm: t("alert.confirm_del") } %>
+          </li>
+        </ul>
+      </div>
+    </td>
   </tr>
   <% end %>
   <hr>
   <tr class="">
     <th><%= t "month_report.name_column.stt_col"%></th>
     <td class = "font-weight-bold"><b><%= t "month_report.name_column.sum_income_col" %></b></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td colspan="5"></td>
     <td><i><b><%= standardized(@sum_this_month_income) %></i></b></td>
   </tr>
   <tr>
     <th><%= t "month_report.name_column.stt_col"%></th>
     <td class = "font-weight-bold"><b><%= t "month_report.name_column.sum_expense_col" %></b></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td colspan="5"></td>
     <td><i><b><%= standardized(@sum_this_month_expense) %></b></i></td>
   </tr>
   <tr class="saving-color">
     <th><%= t "month_report.name_column.stt_col"%></th>
     <td class = "font-weight-bold"><b><%= t "month_report.name_column.saving" %></b></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td colspan="5"></td>
     <td><i><b><%= standardized(@sum_this_month_income - @sum_this_month_expense) %></b></i></td>
   </tr>
+  <%= render "shared/modal", title: t("title.edit", obj: FinancesUser.name) %>
