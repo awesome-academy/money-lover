@@ -11,7 +11,7 @@ FactoryBot.define do
     f.reset_digest {User.digest User.new_token}
     f.reset_sent_at {Time.zone.now - 1.months}
     f.month_intense {Random.rand(1..500000)}
-    f.saving_id {Random.rand(1..4)}
+    f.saving_id {FactoryBot.create :saving}
     f.created_at {Time.zone.now}
     f.updated_at {Time.zone.now}
   end
