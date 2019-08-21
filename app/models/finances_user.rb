@@ -4,7 +4,7 @@ class FinancesUser < ApplicationRecord
   belongs_to :user
   belongs_to :finance
 
-  validates :amout, presence: true
+  validates :amout, presence: true, numericality: {greater_than: Settings.zero}
   validates :date, presence: true
 
   scope :by_user_id, ->(id){where user_id: id}
