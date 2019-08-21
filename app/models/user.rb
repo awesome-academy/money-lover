@@ -13,7 +13,7 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :finances_users
 
   has_many :categories_users, dependent: :destroy
-  has_many :categories, through: :categories_user
+  has_many :categories, through: :categories_users
 
   belongs_to :saving, optional: true
 
