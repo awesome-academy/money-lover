@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe Category, type: :model do
-  let(:category_root) {FactoryBot.create :category}
+  let(:category_root) {FactoryBot.create :category, parent_id: nil}
   let(:category_child_list) {FactoryBot.create_list(:category, 2, parent_id: category_root.id)}
   let(:user) {FactoryBot.create :user}
   let!(:categories_user) {FactoryBot.create :categories_user, category_id: category_root.id, user_id: user.id}

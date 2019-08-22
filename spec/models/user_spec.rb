@@ -31,7 +31,6 @@ RSpec.describe User, type: :model do
       it {is_expected.to validate_presence_of :name}
       it {is_expected.to validate_length_of(:name).is_at_most Settings.validate.max_name}
     end
-
     describe "email valid" do
       it {is_expected.to validate_presence_of :email}
       it {is_expected.to validate_length_of(:email).is_at_most Settings.validate.max_email}
@@ -48,12 +47,10 @@ RSpec.describe User, type: :model do
       it {is_expected.to validate_presence_of :address}
       it {is_expected.to validate_length_of(:address).is_at_most Settings.validate.max_address}
     end
-
     describe "phone valid" do
       it {is_expected.to validate_presence_of :phone}
       it {is_expected.to validate_length_of(:phone).is_at_most Settings.validate.max_phone}
     end
-
     describe "username valid" do
       it {is_expected.to validate_presence_of :username}
       it {is_expected.to validate_length_of(:username).is_at_most Settings.validate.max_username}
